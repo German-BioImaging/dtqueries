@@ -8,7 +8,12 @@ title: Triple-negative breast cancer
 {% endfor %}
 
 {% for rec in site.data.tnbc%}
+
+----
+
 ## {{ rec.name }}
+
+{{ rec.md }}
 
 ```sparql
 {{ rec.rq }}

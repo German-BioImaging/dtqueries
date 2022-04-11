@@ -40,6 +40,25 @@ The queries in this repository were written by authors who are not domain expert
 Suggestions for different queries on the diease areas are welcome. Please this [form](https://github.com/German-BioImaging/dtqueries/issues/new) 
 
 
+This site demonstrates the available, public linked data related to the
+Wellcome Leap Delta Tissue (ΔT) program. The primary linking resource in
+this demonstrator is [Wikidata](https://wikidata.org/).
+
+Resources that are reachable via data links include:
+
+* [Wikipathways](https://www.wikipathways.org/index.php/WikiPathways)
+* [Reactome](https://reactome.org/)
+* [Uniprot](https://www.uniprot.org/)
+* [OpenCitations](https://opencitations.net/)
+* [Cellosaurus](https://web.expasy.org/cellosaurus/)
+* [NCBI gene](https://www.ncbi.nlm.nih.gov/gene)
+* [Ensembl](http://www.ensembl.org/index.html)
+* [Pubchem](https://pubchem.ncbi.nlm.nih.gov/)
+* [cBioPortal](https://www.cbioportal.org/)
+
+Other sites like [Scholia](https://scholia.toolforge.org/) provide enhanced
+visualization of the existing data links.
+
 ## Contents
 
 <ol>

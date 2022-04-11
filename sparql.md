@@ -1,15 +1,16 @@
----
-title: Tuberculosis
----
 
 ## Contents:
-{% for rec in site.data.tuberculosis %}
- - [{{ rec.name }}](#{{ rec.name | slugify }})
+
+<ol>
+{% for rec in sparql %}
+  <li><a href="#{{ rec.name | slugify }}">{{ rec.name }}</a></li>
 {% endfor %}
+</ol>
 
 ----
 
-{% for rec in site.data.tuberculosis %}
+{% for rec in sparql %}
+
 ## {{ rec.name }}
 
 {{ rec.md }}
