@@ -19,11 +19,14 @@
 
 License: [CC-BY-SA 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
 
-This book is written in Markdown with additional instructions that are preprocessed.
-Wishes, comments, and pull requests can be sent to
-[this GitHub repository](https://github.com/German-BioImaging/dtqueries/). If you like this effort, please
-star this GitHub repository! While the book itself has the CC-BY-SA, all SPARQL queries in this book can be used
+This demonstration is written in Markdown with additional instructions that are preprocessed.
+Feedback can be sent via [this GitHub repository](https://github.com/German-BioImaging/dtqueries/).
+While the website itself is licensed under CC-BY-SA, all SPARQL queries in this resource can be used
 under the [CCZero license/waiver](https://creativecommons.org/share-your-work/public-domain/cc0/).
+
+## Introduction
+
+![topic cloud]({{{site.url}}}/images/cloud.png)
 
 ## Contents
 
