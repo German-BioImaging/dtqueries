@@ -1,0 +1,55 @@
+- name: Genes list linked through pathways on triple-negative breast cancer
+  rq: |
+    #title: Genes list linked through pathways on triple-negative breast cancer
+    PREFIX wd:<http://www.wikidata.org/entity/>
+    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+    PREFIX wikibase:<http://wikiba.se/ontology#>
+    PREFIX bd:<http://www.bigdata.com/rdf#>
+
+    SELECT DISTINCT ?gene ?geneLabel WHERE {
+        VALUES ?disease {wd:Q7843332} # with a main subject of triple negative breast cancer
+        ?pathway wdt:P2410 ?wpid ;      # pathways with a Wikipathways ID
+                wdt:P921 ?disease ;
+                wdt:P527 ?gene .      # which has various parts
+        ?gene wdt:P31 wd:Q7187 .       # part is of part gene
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+    }
+
+- name: Chemical compounds part of a pathway on triple-negative breast cancer
+  rq: |
+    #title: Chemical compounds part of a pathway on triple-negative breast cancer
+
+    PREFIX wd: <http://www.wikidata.org/entity/>
+    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+    PREFIX wikibase: <http://wikiba.se/ontology#>
+    PREFIX bd: <http://www.bigdata.com/rdf#>
+
+    SELECT DISTINCT ?compound ?compoundLabel WHERE {
+        ?pathway wdt:P2410 ?wpid ;      # pathways with a Wikipathways ID
+                wdt:P921 wd:Q7843332 ; # with a main subject of triple negative breast cancer
+                wdt:P527 ?compound .      # which has various parts
+        ?compound wdt:P279*/wdt:P31 wd:Q11173 .       # part is subclass of of chemical compound
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+    }
+
+- name: Cell types related to breast cancer via markers
+  rq: |
+    #title: Cell types related to breast cancer via markers
+
+    PREFIX wd: <http://www.wikidata.org/entity/>
+    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+    SELECT ?cellTypeLabel ?geneLabel ?diseaseLabel
+    WHERE {
+        VALUES ?disease { wd:Q128581} # breast cancer
+        ?disease wdt:P2293 ?diseaseGene ;  # Breast cancer --> genetic association --> gene
+            rdfs:label ?diseaseLabel .
+        ?cellType wdt:P8872 ?diseaseGene ; # Cell type --> has marker --> gene
+            rdfs:label ?cellTypeLabel .
+
+        ?diseaseGene rdfs:label ?geneLabel .
+
+        FILTER (LANG(?cellTypeLabel) = "en")
+        FILTER (LANG(?diseaseLabel) = "en")
+        FILTER (LANG(?geneLabel) = "en")
+    }

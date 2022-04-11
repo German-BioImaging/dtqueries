@@ -27,6 +27,18 @@ under the [CCZero license/waiver](https://creativecommons.org/share-your-work/pu
 
 ## Contents
 1. [Publication Records](pubrecord.md)
+{% for rec in site.data.pubrecord %}
+   1. {{ rec.name }}
+{% endfor %}
 2. [Tuberculosis](tuberculosis.md)
+{% for rec in site.data.tuberculosis %}
+   1. {{ rec.name }}
+{% endfor %}
 3. [Triple-negative breast cancer](tnbc.md)
+{% for rec in site.data.tnbc %}
+   1. {{ rec.name }}
+{% endfor %}
 4. [Glioblastoma](glioblastoma.md)
+{% for rec in site.data.glioblastoma %}
+   1. {{ rec.name }}
+{% endfor %}
