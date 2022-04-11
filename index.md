@@ -17,11 +17,11 @@
 
 © 2022 Andra Waagmeester and Josh Moore
 
-License: [<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" width=200>](https://creativecommons.org/licenses/by-sa/4.0/)
+License: [<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" width=100>](https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## Introduction
 
-![topic cloud]({{{site.baseurl}}/images/cloud.png)
+<img src="{{site.baseurl}}/images/cloud.png" width=250/>
 
 This is the first release of the ΔTissue Demonstrator which provides starting points for the exploration of public, linked data.
 Linked data is core to FAIR data sharing and is a key component of the FAIR data model. In this release
