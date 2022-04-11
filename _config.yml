@@ -4,3 +4,28 @@ plugins:
   - jekyll-feed
   - jekyll-include-cache
   - jekyll-sitemap
+  - jekyll-datapage-generator
+
+page_gen-dirs: true
+
+page_gen:
+- data: gliobastoma
+  template: sparql.rq
+  dir: sparql/glioblastoma
+  index_files: true
+  extension: .rq
+- data: pubrecord
+  template: sparql.rq
+  dir: sparql/pubrecord
+  index_files: true
+  extension: .rq
+- data: tnbc
+  template: sparql.rq
+  dir: sparql/tnbc
+  index_files: true
+  extension: .rq
+- data: tuberculosis
+  template: sparql.rq
+  dir: sparql/tuberculosis
+  index_files: true
+  extension: .rq
