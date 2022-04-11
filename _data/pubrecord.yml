@@ -1,5 +1,7 @@
 ---
 - name: Leap group leaders
+  md: |
+    Group leaders for whom their is already a record in wikidata.
   rq: |
     #title:Leap group leaders
     SELECT * WHERE {
