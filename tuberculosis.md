@@ -2,9 +2,9 @@
 classes:
  - wide
 ---
-# Publication Records
+# Tuberculosis
 
-{% for rec in site.data.pubrecord %}
+{% for rec in site.data.tuberculosis %}
 ## {{ rec.name }}
 
 ```sparql
