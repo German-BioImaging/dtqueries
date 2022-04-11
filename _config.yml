@@ -13,6 +13,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-datapage-generator
 
+exclude:
+  - sparql.md
+
 
 # Doesn't work on GitHub Pages
 page_gen-dirs: true
