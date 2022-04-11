@@ -28,28 +28,28 @@ under the [CCZero license/waiver](https://creativecommons.org/share-your-work/pu
 ## Contents
 
 <ol>
-  <li><a href="pubrecord.md">Publication Record</a>
+  <li><a href="pubrecord.html">Publication Record</a>
     <ol>
 {% for rec in site.data.pubrecord %}
    <li><a href="pubrecord.html#{{rec.name | slugify }})">{{ rec.name  }}</a></li>
 {% endfor %}
     </ol>
   </li>
-  <li><a href="tnbc.md">Triple-negative breast record</a>
+  <li><a href="tnbc.html">Triple-negative breast record</a>
     <ol>
 {% for rec in site.data.tnbc %}
    <li><a href="tnbc.html#{{rec.name | slugify }})">{{ rec.name  }}</a></li>
 {% endfor %}
     </ol>
   </li>
-  <li><a href="glioblastoma.md">Glioblastoma</a>
+  <li><a href="glioblastoma.html">Glioblastoma</a>
     <ol>
 {% for rec in site.data.glioblastoma%}
    <li><a href="glioblastoma.html#{{rec.name | slugify }})">{{ rec.name  }}</a></li>
 {% endfor %}
     </ol>
   </li>
-  <li><a href="tuberculosis.md">Tuberculosis</a>
+  <li><a href="tuberculosis.html">Tuberculosis</a>
     <ol>
 {% for rec in site.data.tuberculosis %}
    <li><a href="tuberculosis.html#{{rec.name | slugify }})">{{ rec.name  }}</a></li>
