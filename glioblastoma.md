@@ -1,6 +1,5 @@
 ---
-classes:
- - wide
+toc: true
 ---
 # Glioblastoma
 
