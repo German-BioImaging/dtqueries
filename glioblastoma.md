@@ -4,7 +4,7 @@ title: Glioblastoma
 
 ## Contents:
 {% for rec in site.data.glioblastoma %}
- - [{{ rec.name }}]({{ rec.name | slugify }})
+ - [{{ rec.name }}](#{{ rec.name | slugify }})
 {% endfor %}
 
 {% for rec in site.data.glioblastoma %}
