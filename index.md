@@ -31,28 +31,28 @@ under the [CCZero license/waiver](https://creativecommons.org/share-your-work/pu
   <li><a href="pubrecord.md">Publication Record</a>
     <ol>
 {% for rec in site.data.pubrecord %}
-   <li><a href="pubrecord.html#{{rec.name | slugify }})"/>{{ rec.name  }}</a></li>
+   <li><a href="pubrecord.html#{{rec.name | slugify }})">{{ rec.name  }}</a></li>
 {% endfor %}
     </ol>
   </li>
   <li><a href="tnbc.md">Triple-negative breast record</a>
     <ol>
 {% for rec in site.data.tnbc %}
-   <li><a href="tnbc.html#{{rec.name | slugify }})"/>{{ rec.name  }}</a></li>
+   <li><a href="tnbc.html#{{rec.name | slugify }})">{{ rec.name  }}</a></li>
 {% endfor %}
     </ol>
   </li>
   <li><a href="glioblastoma.md">Glioblastoma</a>
     <ol>
 {% for rec in site.data.glioblastoma%}
-   <li><a href="glioblastoma.html#{{rec.name | slugify }})"/>{{ rec.name  }}</a></li>
+   <li><a href="glioblastoma.html#{{rec.name | slugify }})">{{ rec.name  }}</a></li>
 {% endfor %}
     </ol>
   </li>
   <li><a href="tuberculosis.md">Tuberculosis</a>
     <ol>
 {% for rec in site.data.tuberculosis %}
-   <li><a href="tuberculosis.html#{{rec.name | slugify }})"/>{{ rec.name  }}</a></li>
+   <li><a href="tuberculosis.html#{{rec.name | slugify }})">{{ rec.name  }}</a></li>
 {% endfor %}
     </ol>
   </li>

@@ -1,3 +1,5 @@
+title: "ΔTissue Demonstrator"
+
 markdown: kramdown
 remote_theme: "mmistakes/minimal-mistakes@4.24.0"
 plugins:
@@ -6,8 +8,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-datapage-generator
 
-page_gen-dirs: true
 
+# Doesn't work on GitHub Pages
+page_gen-dirs: true
 page_gen:
 - data: gliobastoma
   template: sparql.rq
