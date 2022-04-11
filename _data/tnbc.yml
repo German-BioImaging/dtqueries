@@ -6,12 +6,14 @@
     PREFIX wikibase:<http://wikiba.se/ontology#>
     PREFIX bd:<http://www.bigdata.com/rdf#>
 
-    SELECT DISTINCT ?gene ?geneLabel WHERE {
+    SELECT DISTINCT ?gene ?geneLabel ?scholia WHERE {
         VALUES ?disease {wd:Q7843332} # with a main subject of triple negative breast cancer
         ?pathway wdt:P2410 ?wpid ;      # pathways with a Wikipathways ID
                 wdt:P921 ?disease ;
                 wdt:P527 ?gene .      # which has various parts
         ?gene wdt:P31 wd:Q7187 .       # part is of part gene
+        BIND(uri(CONCAT("https://scholia.toolforge.org/gene/",REPLACE(str(?gene), "http://www.wikidata.org/entity/", ""))) as ?scholia)
+
       SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
     }
 
@@ -24,11 +26,13 @@
     PREFIX wikibase: <http://wikiba.se/ontology#>
     PREFIX bd: <http://www.bigdata.com/rdf#>
 
-    SELECT DISTINCT ?compound ?compoundLabel WHERE {
+    SELECT DISTINCT ?compound ?compoundLabel ?scholia WHERE {
         ?pathway wdt:P2410 ?wpid ;      # pathways with a Wikipathways ID
                 wdt:P921 wd:Q7843332 ; # with a main subject of triple negative breast cancer
                 wdt:P527 ?compound .      # which has various parts
         ?compound wdt:P279*/wdt:P31 wd:Q11173 .       # part is subclass of of chemical compound
+        BIND(uri(CONCAT("https://scholia.toolforge.org/chemical/",REPLACE(str(?gene), "http://www.wikidata.org/entity/", ""))) as ?scholia)
+
       SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
     }
 
@@ -39,7 +43,7 @@
     PREFIX wd: <http://www.wikidata.org/entity/>
     PREFIX wdt: <http://www.wikidata.org/prop/direct/>
 
-    SELECT ?cellTypeLabel ?geneLabel ?diseaseLabel
+    SELECT ?cellTypeLabel ?scholia_cellType ?geneLabel ?scholia_gene ?diseaseLabel ?scholia_disease
     WHERE {
         VALUES ?disease { wd:Q128581} # breast cancer
         ?disease wdt:P2293 ?diseaseGene ;  # Breast cancer --> genetic association --> gene
@@ -48,6 +52,9 @@
             rdfs:label ?cellTypeLabel .
 
         ?diseaseGene rdfs:label ?geneLabel .
+        BIND(uri(CONCAT("https://scholia.toolforge.org/disease/",REPLACE(str(?disease), "http://www.wikidata.org/entity/", ""))) as ?scholia_disease)
+        BIND(uri(CONCAT("https://scholia.toolforge.org/topic/",REPLACE(str(?cellType), "http://www.wikidata.org/entity/", ""))) as ?scholia_cellType)
+        BIND(uri(CONCAT("https://scholia.toolforge.org/gene/",REPLACE(str(?diseaseGene), "http://www.wikidata.org/entity/", ""))) as ?scholia_gene)
 
         FILTER (LANG(?cellTypeLabel) = "en")
         FILTER (LANG(?diseaseLabel) = "en")

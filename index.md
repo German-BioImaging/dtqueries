@@ -100,6 +100,7 @@ Future editions of this demonstrator will include:
 * Direct linked-data validation and enrichment using [Shape Expressions](https://shex.io)
 * Federated querying of linked data where the data is hosted on multiple sources.
 * Direct download of linked data from the sources.
+* Example queries on a revived linked-tcga SPARQL endpoints. 
 
 ## Impressum
 
