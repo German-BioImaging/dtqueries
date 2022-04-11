@@ -1,9 +1,6 @@
 ---
-classes:
- - wide
+title: Triple-negative breast cancer
 ---
-# Triple-negative breast cancer
-
 {% for rec in site.data.tnbc%}
 ## {{ rec.name }}
 

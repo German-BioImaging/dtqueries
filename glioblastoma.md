@@ -1,8 +1,3 @@
----
-toc: true
----
-# Glioblastoma
-
 {% for rec in site.data.glioblastoma %}
 ## {{ rec.name }}
 

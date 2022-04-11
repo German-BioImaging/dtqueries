@@ -1,10 +1,6 @@
 ---
-toc: true
-classes:
- - wide
+title: Publication records
 ---
-# Publication Records
-
 {% for rec in site.data.pubrecord %}
 ## {{ rec.name }}
 

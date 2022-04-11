@@ -1,9 +1,3 @@
----
-classes:
- - wide
----
-# Tuberculosis
-
 {% for rec in site.data.tuberculosis %}
 ## {{ rec.name }}
 
