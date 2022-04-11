@@ -7,8 +7,6 @@
 {% endfor %}
 </ol>
 
-</section>
-
 {% for rec in sparql %}
 
 <br/>
