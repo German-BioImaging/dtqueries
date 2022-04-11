@@ -19,7 +19,8 @@
 
 License: [CC-BY-SA 4.0 International](https://creativecommons.org/licenses/by-sa/4.0/)
 
-This demonstration is written in Markdown with additional instructions that are preprocessed.
+This demonstration is written in Markdown with additional instructions consisting of
+[SPARQL queries](https://en.wikipedia.org/wiki/SPARQL) that are dynamically loaded from https://www.wikidata.org/.
 Feedback can be sent via [this GitHub repository](https://github.com/German-BioImaging/dtqueries/).
 While the website itself is licensed under CC-BY-SA, all SPARQL queries in this resource can be used
 under the [CCZero license/waiver](https://creativecommons.org/share-your-work/public-domain/cc0/).
