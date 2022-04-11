@@ -8,9 +8,12 @@ title: Publication records
 {% endfor %}
 
 {% for rec in site.data.pubrecord %}
+
+----
+
 ## {{ rec.name }}
 
-{{ rec.md}}
+{{ rec.md }}
 
 ```sparql
 {{ rec.rq }}

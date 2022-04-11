@@ -7,8 +7,12 @@ title: Tuberculosis
  - [{{ rec.name }}](#{{ rec.name | slugify }})
 {% endfor %}
 
+----
+
 {% for rec in site.data.tuberculosis %}
 ## {{ rec.name }}
+
+{{ rec.md }}
 
 ```sparql
 {{ rec.rq }}

@@ -9,7 +9,11 @@ title: Glioblastoma
 
 {% for rec in site.data.glioblastoma %}
 
+----
+
 ## {{ rec.name }}
+
+{{ rec.md }}
 
 ```sparql
 {{ rec.rq }}
