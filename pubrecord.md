@@ -1,6 +1,12 @@
 ---
 title: Publication records
 ---
+
+## Contents:
+{% for rec in site.data.pubrecord %}
+ - [{{ rec.name }}]({{ rec.name | slugify }})
+{% endfor %}
+
 {% for rec in site.data.pubrecord %}
 ## {{ rec.name }}
 

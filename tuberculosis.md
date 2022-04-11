@@ -1,3 +1,12 @@
+---
+title: Tuberculosis
+---
+
+## Contents:
+{% for rec in site.data.tuberculosis %}
+ - [{{ rec.name }}]({{ rec.name | slugify }})
+{% endfor %}
+
 {% for rec in site.data.tuberculosis %}
 ## {{ rec.name }}
 
