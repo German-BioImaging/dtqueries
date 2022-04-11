@@ -30,10 +30,11 @@
 - name : Genes involved in the immune response to tuberculosis
   rq: |
     #title: Genes involved in the immune response to tuberculosis
-    SELECT ?gene ?geneLabel WHERE {
+    SELECT ?gene ?geneLabel ?scholia WHERE {
       ?item wdt:P31 wd:Q4915012 ;
             wdt:P527 ?gene ;
             wdt:P1050 wd:Q12204 .
       ?gene wdt:P31 wd:Q7187 .
+      BIND(uri(CONCAT("https://scholia.toolforge.org/gene/",REPLACE(str(?gene), "http://www.wikidata.org/entity/", ""))) as ?scholia)
       SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
     }

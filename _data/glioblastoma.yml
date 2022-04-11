@@ -7,33 +7,38 @@
     PREFIX wikibase: <http://wikiba.se/ontology#>
     PREFIX bd: <http://www.bigdata.com/rdf#>
 
-    SELECT DISTINCT ?gene ?geneLabel WHERE {
+    SELECT DISTINCT ?gene ?geneLabel ?scholia WHERE {
         VALUES ?disease {wd:Q282142} # with a main subject of glioblastoma
         ?pathway wdt:P2410 ?wpid ;      # pathways with a Wikipathways ID
                 wdt:P921 ?disease ;
                 wdt:P527 ?gene .      # which has various parts
         ?gene wdt:P31 wd:Q7187 .       # part is of part gene
+      BIND(uri(CONCAT("https://scholia.toolforge.org/gene/",REPLACE(str(?gene), "http://www.wikidata.org/entity/", ""))) as ?scholia)
       SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
     }
 
 - name: Chemical compounds part of a pathway on glioblastoma
   rq: |
     #title: Chemical compounds part of a pathway on glioblastoma
-    SELECT DISTINCT ?compound ?compoundLabel WHERE {
+    SELECT DISTINCT ?compound ?compoundLabel ?scholia WHERE {
         ?pathway wdt:P2410 ?wpid ;      # pathways with a Wikipathways ID
                 wdt:P921 wd:Q7843332 ; # with a main subject of triple negative breast cancer
                 wdt:P527 ?compound .      # which has various parts
         ?compound wdt:P279*/wdt:P31 wd:Q11173 .       # part is subclass of of chemical compound
+      BIND(uri(CONCAT("https://scholia.toolforge.org/chemical/",REPLACE(str(?compound), "http://www.wikidata.org/entity/", ""))) as ?scholia)
       SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
     }
 
 - name: All cell lines associated with glioblastoma
   rq: |
     #title: All cell lines associated with glioblastoma
-    SELECT ?disease ?diseaseLabel ?cellLines ?cellLinesLabel ?cellosaurusId WHERE {
+    SELECT ?disease ?diseaseLabel ?scholia_disease ?cellLines ?cellLinesLabel ?scholia_cellLine ?cellosaurusId WHERE {
       VALUES ?diseaseRoot {  wd:Q282142 }
       ?cellLines wdt:P3289 ?cellosaurusId ;
                 wdt:P5166 ?disease .
       ?disease wdt:P279* ?diseaseRoot .
+      BIND(uri(CONCAT("https://scholia.toolforge.org/disease/",REPLACE(str(?disease), "http://www.wikidata.org/entity/", ""))) as ?scholia_disease)
+      BIND(uri(CONCAT("https://scholia.toolforge.org/topic/",REPLACE(str(?cellLines), "http://www.wikidata.org/entity/", ""))) as ?scholia_cellLine)
+     
         SERVICE wikibase:label { bd:serviceParam wikibase:language "en" } .
     }
