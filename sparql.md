@@ -7,9 +7,17 @@
 {% endfor %}
 </ol>
 
+</section>
+
 {% for rec in sparql %}
 
+<br/>
+
 ----
+
+<br/>
+
+[Contents ↑](#contents)
 
 ## {{ rec.name }}
 
