@@ -1,0 +1,115 @@
+---
+- name: Leap group leaders
+  rq: |
+    #title:Leap group leaders
+    SELECT * WHERE {
+      VALUES ?leapauthor {
+          wd:Q59830751
+          wd:Q59679079
+          wd:Q59674360
+          wd:Q5107972
+          wd:Q39049575
+          wd:Q30004330
+          wd:Q55101059
+          wd:Q88590244
+          wd:Q88797604
+          wd:Q5638525
+          wd:Q96210212
+          wd:Q49516549
+          }
+
+      ?leapauthor rdfs:label ?leapauthorLabel .
+
+      FILTER (lang(?leapauthorLabel)="en")
+    }
+
+- name: Group leaders and their past and present affiliations
+  rq: |
+    #title: Group leaders and their past and present affiliations
+    PREFIX wd: <http://www.wikidata.org/entity/>
+    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+    PREFIX wikibase: <http://wikiba.se/ontology#>
+    PREFIX bd:<http://www.bigdata.com/rdf#>
+
+    SELECT DISTINCT ?leapauthor ?leapauthorLabel ?affiliation ?affiliationLabel WHERE {
+      VALUES ?leapauthor {wd:Q59830751 wd:Q59679079 wd:Q59679079 wd:Q59674360 wd:Q5107972 wd:Q39049575 wd:Q30004330 wd:Q55101059 wd:Q88590244 wd:Q88797604 wd:Q5638525 wd:Q96210212 wd:Q49516549}
+
+      ?leapauthor wdt:P108 ?affiliation .
+
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+    }
+    ORDER BY ?leapauthor
+
+- name: Group leaders and their publication records
+  rq: |
+    #title:Group leaders and their publication records
+    #defaultView:Tree
+
+    PREFIX wd: <http://www.wikidata.org/entity/>
+    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+    PREFIX wikibase: <http://wikiba.se/ontology#>
+    PREFIX bd: <http://www.bigdata.com/rdf#>
+
+    SELECT DISTINCT ?leapauthor ?leapauthorLabel ?publication ?publicationLabel ?pmid ?doi  WHERE {
+      VALUES ?leapauthor {wd:Q59830751 wd:Q59679079 wd:Q59679079 wd:Q59674360 wd:Q5107972 wd:Q39049575 wd:Q30004330 wd:Q55101059 wd:Q88590244 wd:Q88797604 wd:Q5638525 wd:Q96210212 wd:Q49516549}
+
+      ?publication wdt:P50 ?leapauthor .
+
+      OPTIONAL {?publication wdt:P698 ?pmid .}
+      OPTIONAL {?publication wdt:P356 ?doi .}
+
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+    }
+
+
+- name: Publications and their topics
+  rq: |
+    #title:Publications and their topics
+    #defaultView:BubbleChart
+
+    PREFIX wd: <http://www.wikidata.org/entity/>
+    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+    PREFIX wikibase: <http://wikiba.se/ontology#>
+    PREFIX bd: <http://www.bigdata.com/rdf#>
+
+    SELECT DISTINCT ?topic ?topicLabel (COUNT(?leapauthor) AS ?counts)  WHERE {
+      VALUES ?leapauthor {wd:Q59830751 wd:Q59679079 wd:Q59679079 wd:Q59674360 wd:Q5107972 wd:Q39049575 wd:Q30004330 wd:Q55101059 wd:Q88590244 wd:Q88797604 wd:Q5638525 wd:Q96210212 wd:Q49516549}
+
+      ?publication wdt:P50 ?leapauthor ;
+                  wdt:P921 ?topic .
+
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+    }
+    GROUP BY ?topic ?topicLabel
+    ORDER BY desc(?counts)
+
+- name: Author name strings and their publications
+  rq: |
+    #title:Author name strings and their publications
+    #description:Finds publications by author name strings
+
+    PREFIX wd: <http://www.wikidata.org/entity/>
+    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+    PREFIX wikibase: <http://wikiba.se/ontology#>
+    PREFIX bd: <http://www.bigdata.com/rdf#>
+
+    SELECT DISTINCT ?leapauthor ?publication ?publicationLabel ?pmid ?doi  WHERE {
+      VALUES ?leapauthor { "Adrie Jc Steyn"
+                            "Assaf Zaritsky"
+                            "Michael Roukes"
+                            "Chris Sander"
+                            "Fabian J. Theis"
+                            "Maddy Parsons"
+                            "Gregory Hannon"
+                            "Virginie Rozot"
+                            "Denise Kirschner"
+                            "Hagan Bayley"
+                            "Stéphane Pagès"
+                            "Joerg Bewersdorf"}
+
+      ?publication wdt:P2093 ?leapauthor .
+
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+      OPTIONAL {?publication wdt:P698 ?pmid .}
+      OPTIONAL {?publication wdt:P356 ?doi .}
+    }
