@@ -59,6 +59,11 @@ Resources that are reachable via data links include:
 Other sites like [Scholia](https://scholia.toolforge.org/) provide enhanced
 visualization of the existing data links.
 
+## Future work
+Future editions of this demonstrator will include:
+* Direct linked-data validation and enrichment using [Shape Expressions](https://shex.io)
+* Federated querying of linked data where the data is hosted on multiple sources.
+
 ## Contents
 
 <ol>
