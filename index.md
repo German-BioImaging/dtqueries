@@ -26,19 +26,34 @@ star this GitHub repository! While the book itself has the CC-BY-SA, all SPARQL 
 under the [CCZero license/waiver](https://creativecommons.org/share-your-work/public-domain/cc0/).
 
 ## Contents
-1. [Publication Records](pubrecord.md)
+
+<ol>
+  <li><a href="pubrecord.md">Publication Record</a>
+    <ol>
 {% for rec in site.data.pubrecord %}
-   - [{{ rec.name }}](pubrecord.html#{{rec.name | slugify }})
+   <li><a href="pubrecord.html#{{rec.name | slugify }})"/>{{ rec.name  }}</a></li>
 {% endfor %}
-2. [Tuberculosis](tuberculosis.md)
-{% for rec in site.data.tuberculosis %}
-   - [{{ rec.name }}](tuberculosis.html#{{rec.name | slugify }})
-{% endfor %}
-3. [Triple-negative breast cancer](tnbc.md)
+    </ol>
+  </li>
+  <li><a href="tnbc.md">Triple-negative breast record</a>
+    <ol>
 {% for rec in site.data.tnbc %}
-   - [{{ rec.name }}](tnbc.html#{{rec.name | slugify }})
+   <li><a href="tnbc.html#{{rec.name | slugify }})"/>{{ rec.name  }}</a></li>
 {% endfor %}
-4. [Glioblastoma](glioblastoma.md)
-{% for rec in site.data.glioblastoma %}
-   - [{{ rec.name }}](glioblastoma.html#{{rec.name | slugify }})
+    </ol>
+  </li>
+  <li><a href="glioblastoma.md">Glioblastoma</a>
+    <ol>
+{% for rec in site.data.glioblastoma%}
+   <li><a href="glioblastoma.html#{{rec.name | slugify }})"/>{{ rec.name  }}</a></li>
 {% endfor %}
+    </ol>
+  </li>
+  <li><a href="tuberculosis.md">Tuberculosis</a>
+    <ol>
+{% for rec in site.data.tuberculosis %}
+   <li><a href="tuberculosis.html#{{rec.name | slugify }})"/>{{ rec.name  }}</a></li>
+{% endfor %}
+    </ol>
+  </li>
+</ol>
