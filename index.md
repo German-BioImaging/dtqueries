@@ -17,11 +17,11 @@
 
 © 2022 Andra Waagmeester and Josh Moore
 
-License: [<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" width=100>](https://creativecommons.org/licenses/by-sa/4.0/)
+License: [<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" width="10%">](https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## Introduction
 
-<img src="{{site.baseurl}}/images/cloud.png" width=250/>
+<img src="{{site.baseurl}}/images/cloud.png" width="50%"/>
 
 This is the first release of the ΔTissue Demonstrator which provides starting points for the exploration of public, linked data.
 Linked data is core to FAIR data sharing and is a key component of the FAIR data model. In this release
@@ -61,12 +61,6 @@ resource that hosts non-CC0 data will be needed.
 Please note that the queries in this repository were written by the authors who are not domain experts in the disease areas.
 Suggestions for different queries on the disease areas are welcome using this [form](https://github.com/German-BioImaging/dtqueries/issues/new) 
 
-## Future work
-Future editions of this demonstrator will include:
-* Direct linked-data validation and enrichment using [Shape Expressions](https://shex.io)
-* Federated querying of linked data where the data is hosted on multiple sources.
-* Direct download of linked data from the sources.
-
 ## Contents
 
 <ol>
@@ -100,10 +94,17 @@ Future editions of this demonstrator will include:
   </li>
 </ol>
 
-<hr/>
+## Future work
+
+Future editions of this demonstrator will include:
+* Direct linked-data validation and enrichment using [Shape Expressions](https://shex.io)
+* Federated querying of linked data where the data is hosted on multiple sources.
+* Direct download of linked data from the sources.
+
+## Impressum
 
 This demonstration is written in Markdown with additional instructions consisting of
 [SPARQL queries](https://en.wikipedia.org/wiki/SPARQL) that are dynamically loaded from https://www.wikidata.org/.
-Feedback can be sent via [this GitHub repository](https://github.com/German-BioImaging/dtqueries/).
 While the website itself is licensed under CC-BY-SA, all SPARQL queries in this resource can be used
 under the [CCZero license/waiver](https://creativecommons.org/share-your-work/public-domain/cc0/).
+Feedback can be sent via [this GitHub repository](https://github.com/German-BioImaging/dtqueries/).
