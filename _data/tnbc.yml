@@ -79,3 +79,4 @@
       ?file wdt:P180 ?pathway ;
             schema:url ?url .
     }
+  srv: "https://commons-query.wikimedia.org/"
