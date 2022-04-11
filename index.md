@@ -29,6 +29,25 @@ under the [CCZero license/waiver](https://creativecommons.org/share-your-work/pu
 
 ![topic cloud]({{{site.baseurl}}/images/cloud.png)
 
+This site demonstrates the available, public linked data related to the
+Wellcome Leap Delta Tissue (ΔT) program. The primary linking resource in
+this demonstrator is [Wikidata](https://wikidata.org/).
+
+Resources that are reachable via data links include:
+
+* [Wikipathways](https://www.wikipathways.org/index.php/WikiPathways)
+* [Reactome](https://reactome.org/)
+* [Uniprot](https://www.uniprot.org/)
+* [OpenCitations](https://opencitations.net/)
+* [Cellosaurus](https://web.expasy.org/cellosaurus/)
+* [NCBI gene](https://www.ncbi.nlm.nih.gov/gene)
+* [Ensembl](http://www.ensembl.org/index.html)
+* [Pubchem](https://pubchem.ncbi.nlm.nih.gov/)
+* [cBioPortal](https://www.cbioportal.org/)
+
+Other sites like [Scholia](https://scholia.toolforge.org/) provide enhanced
+visualization of the existing data links.
+
 ## Contents
 
 <ol>
