@@ -60,23 +60,3 @@
         FILTER (LANG(?diseaseLabel) = "en")
         FILTER (LANG(?geneLabel) = "en")
     }
-
-- name: Visualizations of pathways involved in TNBC
-  rq: |
-    #title: Visualizations of pathways involved in TNBC
-    #defaultView:ImageGrid
-    SELECT * WITH {
-      SELECT * WHERE {
-        SERVICE <https://query.wikidata.org/sparql> {
-            ?pathway wdt:P2410 ?wpid ;
-                wdt:P921 wd:Q7843332 .
-      }
-      }
-      } AS %pathways
-          WHERE
-    {
-      INCLUDE %pathways
-      ?file wdt:P180 ?pathway ;
-            schema:url ?url .
-    }
-  srv: "https://commons-query.wikimedia.org/"
