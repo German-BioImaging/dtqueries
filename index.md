@@ -26,7 +26,7 @@ under the [CCZero license/waiver](https://creativecommons.org/share-your-work/pu
 
 ## Introduction
 
-![topic cloud]({{{site.url}}}/images/cloud.png)
+![topic cloud]({{{site.url}}/images/cloud.png)
 
 ## Contents
 
