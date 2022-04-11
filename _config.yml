@@ -1,7 +1,10 @@
 title: "ΔTissue Demonstrator"
 
-markdown: kramdown
-remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+theme: minima
+
+# markdown: kramdown
+# remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+
 plugins:
   - jekyll-feed
   - jekyll-include-cache
