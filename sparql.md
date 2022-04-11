@@ -7,9 +7,9 @@
 {% endfor %}
 </ol>
 
-----
-
 {% for rec in sparql %}
+
+----
 
 ## {{ rec.name }}
 
