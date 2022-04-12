@@ -13,7 +13,7 @@
 }
 </script>
 
-# ΔTissue Demonstrator (v0.1.0)
+# ΔTissue Demonstrator (v0.2)
 
 © 2022 Andra Waagmeester and Josh Moore
 
@@ -38,6 +38,10 @@ Resources that are reachable via data links include:
 * [Ensembl](http://www.ensembl.org/index.html)
 * [Pubchem](https://pubchem.ncbi.nlm.nih.gov/)
 * [cBioPortal](https://www.cbioportal.org/)
+
+Other resources, like [Genomic Data Commons Data Portal](https://portal.gdc.cancer.gov/)
+provide access to data using the same (or compatible) identifiers but which are not
+directly linkable.
 
 Other sites like [Scholia](https://scholia.toolforge.org/) provide enhanced
 visualization of the existing data links, like the image above showing the topics
@@ -92,6 +96,11 @@ Suggestions for different queries on the disease areas are welcome using this [f
 {% endfor %}
     </ol>
   </li>
+  <li><a href="data.html">Data Resources</a>
+    <ol>
+   <li><a href="data.html#tcga">TCGA</a></li>
+    </ol>
+  </li>
 </ol>
 
 ## Future work
@@ -108,4 +117,5 @@ This demonstration is written in Markdown with additional instructions consistin
 [SPARQL queries](https://en.wikipedia.org/wiki/SPARQL) that are dynamically loaded from https://www.wikidata.org/.
 While the website itself is licensed under CC-BY-SA, all SPARQL queries in this resource can be used
 under the [CCZero license/waiver](https://creativecommons.org/share-your-work/public-domain/cc0/).
-Feedback can be sent via [this GitHub repository](https://github.com/German-BioImaging/dtqueries/).
+Feedback can be sent via [this GitHub repository](https://github.com/German-BioImaging/dtqueries/), and
+a list of changes can be found in [CHANGELOG.md](https://github.com/German-BioImaging/dtqueries/blob/HEAD/CHANGELOG.md).
