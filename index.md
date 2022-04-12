@@ -92,6 +92,11 @@ Suggestions for different queries on the disease areas are welcome using this [f
 {% endfor %}
     </ol>
   </li>
+  <li><a href="data.html">Data Resources</a>
+    <ol>
+   <li><a href="data.html#tcga">TCGA</a></li>
+    </ol>
+  </li>
 </ol>
 
 ## Future work
