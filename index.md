@@ -39,6 +39,10 @@ Resources that are reachable via data links include:
 * [Pubchem](https://pubchem.ncbi.nlm.nih.gov/)
 * [cBioPortal](https://www.cbioportal.org/)
 
+Other resources, like [Genomic Data Commons Data Portal](https://portal.gdc.cancer.gov/)
+provide access to data using the same (or compatible) identifiers but which are not
+directly linkable.
+
 Other sites like [Scholia](https://scholia.toolforge.org/) provide enhanced
 visualization of the existing data links, like the image above showing the topics
 of all ΔTissue authors who could be found in Wikidata.
