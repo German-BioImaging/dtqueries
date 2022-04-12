@@ -16,6 +16,7 @@ https://www.biostars.org/p/279048/ for details)
 <div class="datatable-begin"></div>
 TCGA Case | High-impact somatic mutations | Images available
 --------- | ----------------------------- | ----------------
-{% for rec in site.data.tcga %}
-[{{rec.case}}]({{gdc}}/{{ rec.case }}) | {% for gene in rec.genes%}{{gene["symbol"]}} {% unless forloop.last %},{% endunless %}{% endfor %} | {% if rec.slides %}[yes]({{slides}}{{rec.case}}){%else %}no{% endif %} {% endfor %}
+{%- for rec in site.data.tcga -%}
+[{{rec.case}}]({{gdc}}/{{ rec.case }}) | {% for gene in rec.genes %}{{gene["symbol"]}} {% unless forloop.last %},{% endunless %}{% endfor %} | {% if rec.slides %}[yes]({{slides}}{{rec.case}}){%else %}no{% endif %}
+{%- endfor -%}
 </div class="datatable-end"></div>
