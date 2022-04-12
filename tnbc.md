@@ -24,15 +24,15 @@ https://www.biostars.org/p/279048/ for details)
         </tr>
     </thead>
     <tbody>
-        <tr>
 {% for rec in site.data.tcga %}
+        <tr>
             <td><a href="https://portal.gdc.cancer.gov/cases/{{ rec.case }}">{{rec.case}}</a></td>
             <td>{% for gene in rec.genes%}
                 {{gene}} {% unless forloop.last %},{% endunless %}
                 {% endfor %}
             </td>
             <td>rec.slides</td>
-{% endfor %}
         </tr>
+{% endfor %}
     </tbody>
 </table>
