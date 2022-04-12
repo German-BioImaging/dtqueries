@@ -1,5 +1,6 @@
 ---
 title: Data Resources
+datatable: true
 ---
 
 ## TCGA
@@ -10,7 +11,7 @@ associated with the data and checking for a value of `Negative` in the
 'er_status_by_ihc', 'pr_status_by_ihc', and 'her2_status_by_ihc' columns. (See
 https://www.biostars.org/p/279048/ for details)
 
-<table>
+<table class="display">
     <thead>
         <tr>
         <th>TCGA Case</th>
