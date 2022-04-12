@@ -15,6 +15,7 @@ plugins:
 
 exclude:
   - sparql.md
+  - CHANGELOG.md
 
 
 # Doesn't work on GitHub Pages
