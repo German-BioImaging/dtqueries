@@ -16,8 +16,6 @@ datatable: true
 
 <br/>
 
-[Contents ↑](#contents)
-
 ## TCGA
 
 The following cases from https://portal.gdc.cancer.gov/ have been identified
@@ -58,11 +56,11 @@ https://www.biostars.org/p/279048/ for details)
 
 <br/>
 
+[Contents ↑](#contents)
+
 ----
 
 <br/>
-
-[Contents ↑](#contents)
 
 ## sfaira
 
@@ -110,3 +108,5 @@ Each column in the table displays how many cells of a given type were found in e
 {% endfor %}
     </tbody>
 </table>
+
+[Contents ↑](#contents)
