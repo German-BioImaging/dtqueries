@@ -1,0 +1,128 @@
+datasets:
+  - dataset: 'homosapiens_brain_2019_10x3v2_kanton_001_10.1038/s41586-019-1654-9'
+  - dataset: 'homosapiens_retina_2019_10x3v2_lukowski_001_10.15252/embj.2018100811'
+  - dataset: 'homosapiens_retina_2019_10x3v3_menon_001_10.1038/s41467-019-12780-8'
+  - dataset: 'homosapiens_retina_2019_10x3v3_voigt_001_10.1073/pnas.1914143116'
+  - dataset: 'homosapiens_thymus_2020_10xtechnology_park_001_10.1126/science.aay3224'
+  - dataset: 'homosapiens_brain_2017_droncseq_habib_001_10.1038/nmeth.4407'
+cell_types:
+  - cell_type: 'B cell'
+    datasets: [0, 0, 0, 100, 0, 0]
+  - cell_type: 'CD4-positive, alpha-beta T cell'
+    datasets: [0, 0, 0, 0, 14506, 0]
+  - cell_type: 'CD8-positive, alpha-beta T cell'
+    datasets: [0, 0, 0, 0, 13257, 0]
+  - cell_type: 'CD8-positive, alpha-beta thymocyte'
+    datasets: [0, 0, 0, 0, 6783, 0]
+  - cell_type: 'GABAergic interneuron'
+    datasets: [0, 0, 0, 0, 0, 1629]
+  - cell_type: 'Mueller cell'
+    datasets: [0, 612, 0, 0, 0, 0]
+  - cell_type: 'T cell'
+    datasets: [0, 0, 0, 0, 3614, 0]
+  - cell_type: 'alpha-beta T cell'
+    datasets: [0, 0, 0, 612, 11235, 0]
+  - cell_type: 'amacrine cell'
+    datasets: [0, 281, 497, 0, 0, 0]
+  - cell_type: 'astrocyte'
+    datasets: [0, 0, 0, 0, 0, 1537]
+  - cell_type: 'common myeloid progenitor'
+    datasets: [0, 0, 0, 0, 185, 0]
+  - cell_type: 'cone retinal bipolar cell'
+    datasets: [0, 0, 3155, 0, 0, 0]
+  - cell_type: 'cortical thymic epithelial cell'
+    datasets: [0, 0, 0, 0, 9411, 0]
+  - cell_type: 'dendritic cell'
+    datasets: [0, 0, 0, 0, 2625, 0]
+  - cell_type: 'dentate gyrus of hippocampal formation granule cell'
+    datasets: [0, 0, 0, 0, 0, 1401]
+  - cell_type: 'double negative thymocyte'
+    datasets: [0, 0, 0, 0, 42474, 0]
+  - cell_type: 'double-positive, alpha-beta thymocyte'
+    datasets: [0, 0, 0, 0, 97183, 0]
+  - cell_type: 'early lymphoid progenitor'
+    datasets: [0, 0, 0, 0, 431, 0]
+  - cell_type: 'early pro-B cell'
+    datasets: [0, 0, 0, 0, 290, 0]
+  - cell_type: 'effector memory CD4-positive, alpha-beta T cell'
+    datasets: [0, 0, 0, 0, 2879, 0]
+  - cell_type: 'effector memory CD8-positive, alpha-beta T cell'
+    datasets: [0, 0, 0, 0, 1644, 0]
+  - cell_type: 'endothelial cell'
+    datasets: [0, 0, 0, 174, 5753, 121]
+  - cell_type: 'epithelial cell'
+    datasets: [0, 0, 0, 0, 74, 0]
+  - cell_type: 'epithelial cell of thymus'
+    datasets: [0, 0, 0, 0, 1225, 0]
+  - cell_type: 'erythrocyte'
+    datasets: [0, 0, 0, 0, 644, 0]
+  - cell_type: 'fibroblast'
+    datasets: [0, 0, 0, 1341, 11749, 0]
+  - cell_type: 'gamma-delta T cell'
+    datasets: [0, 0, 0, 0, 2582, 0]
+  - cell_type: 'group 3 innate lymphoid cell'
+    datasets: [0, 0, 0, 0, 561, 0]
+  - cell_type: 'hippocampal pyramidal neuron'
+    datasets: [0, 0, 0, 0, 0, 1026]
+  - cell_type: 'immature NK T cell'
+    datasets: [0, 0, 0, 0, 349, 0]
+  - cell_type: 'macroglial cell'
+    datasets: [0, 0, 5276, 0, 0, 0]
+  - cell_type: 'macrophage'
+    datasets: [0, 0, 0, 172, 0, 0]
+  - cell_type: 'mast cell'
+    datasets: [0, 0, 0, 62, 148, 0]
+  - cell_type: 'medullary thymic epithelial cell'
+    datasets: [0, 0, 0, 0, 6448, 0]
+  - cell_type: 'megakaryocyte'
+    datasets: [0, 0, 0, 0, 36, 0]
+  - cell_type: 'memory B cell'
+    datasets: [0, 0, 0, 0, 2161, 0]
+  - cell_type: 'microglial cell'
+    datasets: [0, 142, 62, 0, 0, 306]
+  - cell_type: 'monocyte'
+    datasets: [0, 0, 0, 0, 265, 0]
+  - cell_type: 'naive B cell'
+    datasets: [0, 0, 0, 0, 2152, 0]
+  - cell_type: 'natural killer cell'
+    datasets: [0, 0, 0, 0, 1615, 0]
+  - cell_type: 'neuronal stem cell'
+    datasets: [0, 0, 0, 0, 0, 178]
+  - cell_type: 'oligodendrocyte'
+    datasets: [0, 0, 0, 0, 0, 2660]
+  - cell_type: 'oligodendrocyte precursor cell'
+    datasets: [0, 0, 0, 0, 0, 618]
+  - cell_type: 'pericyte cell'
+    datasets: [0, 0, 0, 180, 0, 0]
+  - cell_type: 'plasma cell'
+    datasets: [0, 0, 0, 0, 479, 0]
+  - cell_type: 'plasmacytoid dendritic cell'
+    datasets: [0, 0, 0, 0, 1048, 0]
+  - cell_type: 'primary motor cortex pyramidal cell'
+    datasets: [0, 0, 0, 0, 0, 3133]
+  - cell_type: 'regulatory T cell'
+    datasets: [0, 0, 0, 0, 7444, 0]
+  - cell_type: 'retina horizontal cell'
+    datasets: [0, 0, 146, 0, 0, 0]
+  - cell_type: 'retinal bipolar neuron'
+    datasets: [0, 2070, 0, 0, 0, 0]
+  - cell_type: 'retinal blood vessel endothelial cell'
+    datasets: [0, 0, 85, 0, 0, 0]
+  - cell_type: 'retinal cone cell'
+    datasets: [0, 583, 211, 0, 0, 0]
+  - cell_type: 'retinal ganglion cell'
+    datasets: [0, 63, 1514, 0, 0, 0]
+  - cell_type: 'retinal melanocyte'
+    datasets: [0, 0, 0, 881, 0, 0]
+  - cell_type: 'retinal pigment epithelial cell'
+    datasets: [0, 0, 0, 289, 0, 0]
+  - cell_type: 'retinal rod cell'
+    datasets: [0, 12239, 9145, 0, 0, 0]
+  - cell_type: 'terminal Schwann cell'
+    datasets: [0, 0, 0, 524, 0, 0]
+  - cell_type: 'thymic medullary macrophage'
+    datasets: [0, 0, 0, 0, 863, 0]
+  - cell_type: 'unknown'
+    datasets: [90576, 3704, 0, 0, 0, 458]
+  - cell_type: 'vascular associated smooth muscle cell'
+    datasets: [0, 0, 0, 0, 3788, 0]

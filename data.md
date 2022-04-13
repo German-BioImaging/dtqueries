@@ -3,6 +3,21 @@ title: Data Resources
 datatable: true
 ---
 
+## Contents:
+
+<ol>
+  <li><a href="#tcga">TCGA</a></li>
+  <li><a href="#sfaira">sfaira</a></li>
+</ol>
+
+<br/>
+
+----
+
+<br/>
+
+[Contents ↑](#contents)
+
 ## TCGA
 
 The following cases from https://portal.gdc.cancer.gov/ have been identified
@@ -36,6 +51,61 @@ https://www.biostars.org/p/279048/ for details)
                 no
                 {%endif %}
             </td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+
+<br/>
+
+----
+
+<br/>
+
+[Contents ↑](#contents)
+
+## sfaira
+
+sfaira ties together single-cell data for over 170 datasets for numerous tissues
+types in both human and mouse. Downloading and loading the datasets can take
+significant time. Here metadata from the {{ len(site.data.sfaira) }} human brain datasets has been parsed
+using the `sfaira` python library:
+
+```python
+    ds = sfaira.data.Universe(data_path=datadir, meta_path=metadir, cache_path=cachedir)
+    ds.subset(key="organism", values=["Homo sapiens"])
+    ds.subset(key="organ", values=["brain"])
+    ds.download()
+    ds.load(verbose=1)
+    ds.streamline_features(match_to_release="104", subset_genes_to_type="protein_coding")
+    ds.streamline_metadata(schema="sfaira")
+```
+
+Each column in the table displays how many cells of a given type were found in each dataset:
+<ol>
+{% for rec in site.data.sfaira["datasets"] %}
+   <li>{{ rec.dataset }}</li>
+{% endfor %}
+</ol>
+
+<br/>
+
+<table class="display">
+    <thead>
+        <tr>
+        <th>cell type</th>
+{% for rec in site.data.sfaira["datasets"] %}
+        <th>{{ forloop.index }}</th>
+{% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+{% for rec in site.data.sfaira["cell_types"] %}
+        <tr>
+            <td>{{ rec.cell_type }}</td>
+{% for dataset in rec.datasets %}
+            <td>{{ dataset }}</td>
+{% endfor %}
         </tr>
 {% endfor %}
     </tbody>
