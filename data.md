@@ -45,7 +45,7 @@ https://www.biostars.org/p/279048/ for details)
 
 sfaira ties together single-cell data for over 170 datasets for numerous tissues
 types in both human and mouse. Downloading and loading the datasets can take
-significant time. Here metadata from the 4 human brain datasets has been parsed
+significant time. Here metadata from the {{ len(site.data.sfaira) }} human brain datasets has been parsed
 using the `sfaira` python library:
 
 ```python
