@@ -3,6 +3,21 @@ title: Data Resources
 datatable: true
 ---
 
+## Contents:
+
+<ol>
+  <li><a href="#tcga">TCGA</a></li>
+  <li><a href="#sfaira">sfaira</a></li>
+</ol>
+
+<br/>
+
+----
+
+<br/>
+
+[Contents ↑](#contents)
+
 ## TCGA
 
 The following cases from https://portal.gdc.cancer.gov/ have been identified
@@ -40,6 +55,14 @@ https://www.biostars.org/p/279048/ for details)
 {% endfor %}
     </tbody>
 </table>
+
+<br/>
+
+----
+
+<br/>
+
+[Contents ↑](#contents)
 
 ## sfaira
 
