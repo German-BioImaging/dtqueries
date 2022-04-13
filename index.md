@@ -101,7 +101,7 @@ Suggestions for different queries on the disease areas are welcome using this [f
    <li><a href="data.html#tcga">TCGA</a></li>
     </ol>
     <ol>
-   <li><a href="data.html#sfair">sfaira</a></li>
+   <li><a href="data.html#sfaira">sfaira</a></li>
     </ol>
   </li>
 </ol>
