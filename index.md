@@ -13,7 +13,7 @@
 }
 </script>
 
-# ΔTissue Demonstrator (v0.2)
+# ΔTissue Demonstrator (v0.3)
 
 © 2022 Andra Waagmeester and Josh Moore
 
