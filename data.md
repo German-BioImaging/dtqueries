@@ -40,3 +40,40 @@ https://www.biostars.org/p/279048/ for details)
 {% endfor %}
     </tbody>
 </table>
+
+## sfaira
+
+sfaira ties together single-cell data for over 170 datasets for numerous tissues
+types in both human and mouse. Downloading and loading the datasets can take
+significant time. Here metadata from the 4 human brain datasets has been parsed
+using the `sfaira` python library:
+
+```python
+    ds = sfaira.data.Universe(data_path=datadir, meta_path=metadir, cache_path=cachedir)
+    ds.subset(key="organism", values=["Homo sapiens"])
+    ds.subset(key="organ", values=["brain"])
+    ds.download()
+    ds.load(verbose=1)
+    ds.streamline_features(match_to_release="104", subset_genes_to_type="protein_coding")
+    ds.streamline_metadata(schema="sfaira")
+```
+
+<table class="display">
+    <thead>
+        <tr>
+        <th>sfaira dataset</th>
+        <th>cell types</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for rec in site.data.sfaira%}
+        <tr>
+            <td>{{ rec.dataset }}</td>
+            <td>{% for cell_type in rec.cell_types %}
+                {{cell_type["name"]}} ({{cell_type["count"]}}) {% unless forloop.last %},{% endunless %}
+                {% endfor %}
+            </td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,24 @@
+- dataset: example
+  cell_types:
+    - name: primary motor cortex pyramidal cell                    
+      count: 3133
+    - name: oligodendrocyte                                        
+      count: 2660
+    - name: GABAergic interneuron                                  
+      count: 1629
+    - name: astrocyte                                              
+      count: 1537
+    - name: dentate gyrus of hippocampal formation granule cell    
+      count: 1401
+    - name: hippocampal pyramidal neuron                           
+      count: 1026
+    - name: oligodendrocyte precursor cell                          
+      count: 618
+    - name: unknown                                                 
+      count: 458
+    - name: microglial cell                                         
+      count: 306
+    - name: neuronal stem cell                                      
+      count: 178
+    - name: endothelial cell                                        
+      count: 121
