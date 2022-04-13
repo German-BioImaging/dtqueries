@@ -40,22 +40,25 @@ Resources that are reachable via data links include:
 * [cBioPortal](https://www.cbioportal.org/)
 
 Other resources, like [Genomic Data Commons Data Portal](https://portal.gdc.cancer.gov/)
-provide access to data using the same (or compatible) identifiers but which are not
+or [sfaira portal](https://theislab.github.io/sfaira-portal/) provide access to large
+quantities of data using the same (or compatible) identifiers but which are not
 directly linkable.
 
-Other sites like [Scholia](https://scholia.toolforge.org/) provide enhanced
+Finally, other sites like [Scholia](https://scholia.toolforge.org/) provide enhanced
 visualization of the existing data links, like the image above showing the topics
 of all ΔTissue authors who could be found in Wikidata.
 
-For the purpose of this demonstrator two workflows have been developed:
+For the purpose of this demonstrator workflows have been developed:
 
-1. complete publication records for a list of authors and publications
-2. make biological pathways published in the scientific literature machine readable
+1. to complete publication records for a list of authors and publications
+2. to make biological pathways published in the scientific literature machine readable
+3. to query GDC enties via GraphQL and download related tabular data
+4. to download datasets listed on the sfaira portal and load them with the sfaira Python library
 
-and used to create some, non-systematic entries in Wikidata and other resources
-to establish initial links.
+In some cases, entries have been created in Wikidata and elsewhere in order to establish initial links.
+This, however, has not been done systematically without the input of the domain experts.
 
-The demonstrator, however, is a POC to explore existing linked data on the ΔTissue disease areas in Wikidata.
+The demonstrator is a POC to explore existing linked data on the ΔTissue disease areas in Wikidata.
 Currently, the coverage of Wikidata on the ΔTissue disease areas appears to be incomplete.
 Relevant data either needs to be added systematically or the existing data needs to be updated, keeping in mind that
 Wikidata follows applies a CC0 license. Many resources do not. To be able to render a full picture of
