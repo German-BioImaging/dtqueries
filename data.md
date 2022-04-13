@@ -58,21 +58,31 @@ using the `sfaira` python library:
     ds.streamline_metadata(schema="sfaira")
 ```
 
+Each column in the table displays how many cells of a given type were found in each dataset:
+<ol>
+{% for rec in site.data.sfaira["datasets"] %}
+   <li>{{ rec.dataset }}</li>
+{% endfor %}
+</ol>
+
+<br/>
+
 <table class="display">
     <thead>
         <tr>
-        <th>sfaira dataset</th>
-        <th>cell types</th>
+        <th>cell type</th>
+{% for rec in site.data.sfaira["datasets"] %}
+        <th>{{ forloop.index }}</th>
+{% endfor %}
         </tr>
     </thead>
     <tbody>
-{% for rec in site.data.sfaira%}
+{% for rec in site.data.sfaira["cell_types"] %}
         <tr>
-            <td>{{ rec.dataset }}</td>
-            <td>{% for cell_type in rec.cell_types %}
-                {{cell_type["name"]}} ({{cell_type["count"]}}) {% unless forloop.last %},{% endunless %}
-                {% endfor %}
-            </td>
+            <td>{{ rec.cell_type }}</td>
+{% for dataset in rec.datasets %}
+            <td>{{ dataset }}</td>
+{% endfor %}
         </tr>
 {% endfor %}
     </tbody>
