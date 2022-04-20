@@ -2,10 +2,7 @@ title: "ΔTissue Demonstrator"
 description: "Demonstration of Linked Data queries for the ΔTissue project."
 author: "Andra Waagmeester & Josh Moore"
 
-theme: minima
-
-# markdown: kramdown
-# remote_theme: "mmistakes/minimal-mistakes@4.24.0"
+remote_theme: "jekyll/minima@master"
 
 plugins:
   - jekyll-feed
