@@ -17,6 +17,24 @@
       SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
     }
 
+- name: Concatenated list of TNBC genes
+  md: |
+    This simplified list can be copied under <a href="data.html#network">STRING Network Interactions</a>
+    to explore network.
+  rq: |
+    #title: Genes list linked through pathways on triple-negative breast cancer
+    SELECT (GROUP_CONCAT(?geneLabel; SEPARATOR=" ") as ?geneList) WHERE {
+      VALUES ?disease {
+        wd:Q7843332
+      }
+      ?pathway wdt:P2410 ?wpid;
+        wdt:P921 ?disease;
+        wdt:P527 ?gene.
+      ?gene wdt:P31 wd:Q7187.
+      ?gene rdfs:label ?geneLabel.
+      FILTER(LANG(?geneLabel) = "en")
+    }
+
 - name: Chemical compounds part of a pathway on triple-negative breast cancer
   rq: |
     #title: Chemical compounds part of a pathway on triple-negative breast cancer
