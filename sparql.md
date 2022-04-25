@@ -29,6 +29,8 @@
         referrerpolicy="origin" sandbox="allow-scripts allow-same-origin allow-popups">
 </iframe>
 
+{{ rec.post }}
+
 <br/>
 
 [Contents ↑](#contents)
