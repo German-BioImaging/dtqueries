@@ -17,6 +17,26 @@
       SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
     }
 
+- name: Concatenated list of GBM genes
+  md: |
+    This simplified list can be copied under <a href="data.html#network">STRING Network Interactions</a>
+    to explore network.
+  rq: |
+    #title: Concatenated list of GBM genes
+    PREFIX wd: <http://www.wikidata.org/entity/>
+    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+    SELECT (GROUP_CONCAT(?geneLabel; SEPARATOR=" ") as ?geneList) WHERE {
+        VALUES ?disease {wd:Q282142} # with a main subject of glioblastoma
+        ?pathway wdt:P2410 ?wpid ;      # pathways with a Wikipathways ID
+                wdt:P921 ?disease ;
+                wdt:P527 ?gene .      # which has various parts
+        ?gene wdt:P31 wd:Q7187 .       # part is of part gene
+
+        ?gene rdfs:label ?geneLabel.
+        FILTER(LANG(?geneLabel) = "en")
+    }
+
 - name: Chemical compounds part of a pathway on glioblastoma
   rq: |
     #title: Chemical compounds part of a pathway on glioblastoma
