@@ -37,6 +37,25 @@
         FILTER(LANG(?geneLabel) = "en")
     }
 
+  post: |
+    ## STRING Network Interactions {#network}
+
+    The list of genes from Wikidata can be entered here to visualize
+    the network interactions from https://string-db.org.
+
+    <center>
+        <input type="text" id='inputarea' placeholder='RB1 BRCA1 SRC AKT2 ARAF CCNE1 TP53 EGFR ATM MET IGF1R CDKN1A RAF1 GRB2 TSC1 FGFR2 CDKN2A CCND2 ERBB2 PTEN EP300 HRAS PIK3CA PIK3CD CCND1 MAPK1 MAPK3 PRKCD E2F1 IRS1 AKT1 ERBB3 FOXO1 FOXO3 GAB1 MDM2 MDM4 FOXO4 MSH6 CDK2 CDK4 CDK6 PRKCA FGFR1 PIK3CB PIK3CG PIK3R2 PLCG1 PLCG2 PRKCB PRKCG PRKCH NRAS PDGFRA PDGFRB PDPK1 PIK3C2A PIK3C2B PIK3C2G MAP2K7 MAP2K4 TSC2 AKT3 SPRY2 ERRFI1 MIR21 NF1 PRKCI PRKCQ PRKCZ MAP2K1 MAP2K2 MAP2K3 MAP2K5 MAP2K6 KRAS CDKN1B PIK3R1 BRAF BRCA2 CBL CDKN2B CDKN2C'/>
+        <br/>
+        <button onclick='javascript:send_request_to_string();' type="button">Let's go!</button>
+        <div id="stringEmbedded"></div>
+    </center>
+
+    <script>
+    $(document).ready( function () {
+      send_request_to_string()
+    } );
+    </script>
+
 - name: Chemical compounds part of a pathway on glioblastoma
   rq: |
     #title: Chemical compounds part of a pathway on glioblastoma
