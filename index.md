@@ -1,3 +1,7 @@
+---
+title: An Intro
+title: "ΔTissue Demonstrator (v0.4)"
+---
 <script type="application/ld+json">
 {
   "@context": "http://schema.org",
@@ -13,15 +17,12 @@
 }
 </script>
 
-# ΔTissue Demonstrator (v0.4)
-
 {% assign back = "data" %}
 {% assign next = "intro" %}
 {% include_relative navigation.md %}
 
+[<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" width="10%">](https://creativecommons.org/licenses/by-sa/4.0/)
 © 2022 Andra Waagmeester and Josh Moore
-
-License: [<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" width="10%">](https://creativecommons.org/licenses/by-sa/4.0/)
 
 ## Introduction
 
