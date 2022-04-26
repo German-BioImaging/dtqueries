@@ -28,17 +28,15 @@ Linked data is core to FAIR data sharing and is a key component of the FAIR data
 we use Wikidata as a central hub for linked data related to the ΔTissue disease areas (TB, TBNC, GBM).
 
 Resources that are reachable via data links include:
-
-* [Wikipathways](https://www.wikipathways.org/index.php/WikiPathways)
-* [Reactome](https://reactome.org/)
-* [Uniprot](https://www.uniprot.org/)
-* [OpenCitations](https://opencitations.net/)
-* [Cellosaurus](https://web.expasy.org/cellosaurus/)
-* [NCBI gene](https://www.ncbi.nlm.nih.gov/gene)
-* [Ensembl](http://www.ensembl.org/index.html)
-* [Pubchem](https://pubchem.ncbi.nlm.nih.gov/)
-* [cBioPortal](https://www.cbioportal.org/)
-
+[Wikipathways](https://www.wikipathways.org/index.php/WikiPathways),
+[Reactome](https://reactome.org/),
+[Uniprot](https://www.uniprot.org/),
+[OpenCitations](https://opencitations.net/),
+[Cellosaurus](https://web.expasy.org/cellosaurus/),
+[NCBI gene](https://www.ncbi.nlm.nih.gov/gene),
+[Ensembl](http://www.ensembl.org/index.html),
+[Pubchem](https://pubchem.ncbi.nlm.nih.gov/),
+[cBioPortal](https://www.cbioportal.org/).
 Other resources, like [Genomic Data Commons Data Portal](https://portal.gdc.cancer.gov/)
 or [sfaira portal](https://theislab.github.io/sfaira-portal/) provide access to large
 quantities of data using the same (or compatible) identifiers but which are not
