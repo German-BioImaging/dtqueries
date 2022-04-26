@@ -1,0 +1,33 @@
+  <!-- from _includes/custom-head.html -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.11.5/datatables.min.js"></script>
+
+  <!-- https://string-db.org/cgi/help.pl?subpage=api%23embedding-the-interactive-network -->
+  <script type="text/javascript" src="https://string-db.org/javascript/combined_embedded_network_v2.0.3.js"></script>
+  <script>
+
+          function send_request_to_string() {
+
+              var inputField = document.getElementById('inputarea');
+
+              var text = inputField.value;
+
+              if (!text) {text = inputField.placeholder}; // placeholder
+
+              var proteins = text.split(' ');
+
+              /* the actual API query */
+
+              getSTRING('https://string-db.org', {
+                          'species':'9606',
+                          'identifiers':proteins,
+                          'network_flavor':'confidence', 
+                          'caller_identity': 'www.awesome_app.org'
+              })
+
+          }
+
+  </script>
+
+  <!-- end custom-head -->

@@ -3,6 +3,15 @@ title: Data Resources
 datatable: true
 ---
 
+{% assign back = "tuberculosis" %}
+{% assign next = "index" %}
+{% include_relative navigation.md %}
+
+There is, however, a large amount of <i>unlinked</i> data available
+on the web. Here we have investigated two examples, [TCGA](#tcga)
+and [sfaira](#sfaira)). Both are candidates for linking to other
+resources to make a single, queryable platform.
+
 ## Contents:
 
 <ol>
@@ -24,7 +33,7 @@ associated with the data and checking for a value of `Negative` in the
 'er_status_by_ihc', 'pr_status_by_ihc', and 'her2_status_by_ihc' columns. (See
 https://www.biostars.org/p/279048/ for details)
 
-<table class="display">
+<table class="display" id="tcga_table">
     <thead>
         <tr>
         <th>TCGA Case</th>
@@ -66,8 +75,8 @@ https://www.biostars.org/p/279048/ for details)
 
 sfaira ties together single-cell data for over 170 datasets for numerous tissues
 types in both human and mouse. Downloading and loading the datasets can take
-significant time. Here metadata from the {{ len(site.data.sfaira) }} human brain datasets has been parsed
-using the `sfaira` python library:
+significant time. Here metadata from the {{ site.data.sfaira.datasets | size }}
+human brain datasets has been parsed using the `sfaira` python library:
 
 ```python
     ds = sfaira.data.Universe(data_path=datadir, meta_path=metadir, cache_path=cachedir)
@@ -88,7 +97,7 @@ Each column in the table displays how many cells of a given type were found in e
 
 <br/>
 
-<table class="display">
+<table class="display" id="sfaira_table">
     <thead>
         <tr>
         <th>cell type</th>
@@ -110,3 +119,14 @@ Each column in the table displays how many cells of a given type were found in e
 </table>
 
 [Contents ↑](#contents)
+
+{% include_relative navigation.md %}
+
+<script>
+$(document).ready( function () {
+    $('#tcga_table').DataTable();
+} );
+$(document).ready( function () {
+    $('#sfaira_table').DataTable();
+} );
+</script>
