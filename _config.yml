@@ -11,8 +11,8 @@ plugins:
   - jekyll-datapage-generator
 
 exclude:
+  - iframe.md
   - sparql.md
-  - CHANGELOG.md
 
 header_pages:
   - intro.md

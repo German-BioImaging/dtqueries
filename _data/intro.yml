@@ -1,0 +1,26 @@
+- name: What drugs interact with proteins whose genes are associated with prostate cancer?
+  height: 50
+  md: |
+    One of the SPARQL queries provided in the slide deck has been copied below as an example.
+    Importantly, though, in the demonstrator the query is then executed against Wikidata and
+    the results are embedded in the page live.
+  rq: |
+    #title: What drugs interact with proteins whose genes are associated with prostate cancer?
+    #from: "Wikidata for biomedical knowledge integration and curation" by Gregory Stupp (Scripss)
+
+    SELECT ?drug ?drugLabel ?gene ?geneLabel ?biological_process ?biological_processLabel ?disease ?diseaseLabel WHERE {
+      ?drug wdt:P129 ?gene_product .   # drug interacts with a gene_product 
+      ?gene wdt:P688 ?gene_product .   # gene_product (usually a protein) is a product of a gene (a region of DNA)
+      ?disease	wdt:P2293 ?gene .      # genetic association between disease and gene 
+      ?disease wdt:P279* wd:Q12078 .   # limit to cancers wd:Q12078 (the * operator runs up a transitive relation..)
+      SERVICE wikibase:label {
+            bd:serviceParam wikibase:language "en" .
+        }
+    }
+    limit 1000
+  post: |
+    By clicking on any of the references in the results table, you will be taken to the linked
+    data entry from where you can explore related concepts.
+
+    By clicking on "Wikidata query service", you can open the query in an editor so that you
+    can experiment on your own.
