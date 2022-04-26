@@ -3,6 +3,10 @@ title: Data Resources
 datatable: true
 ---
 
+There is, however, a large amount of <i>unlinked</i> data available
+on the web. Here we have investigated two examples, [TCGA](#tcga)
+and [sfaira](#sfaira)). Both are candidates for linking to other
+resources to make a single, queryable platform.
 
 ## Contents:
 
