@@ -8,6 +8,27 @@
     #title: What drugs interact with proteins whose genes are associated with prostate cancer?
     #from: "Wikidata for biomedical knowledge integration and curation" by Gregory Stupp (Scripss)
 
+    SELECT ?drugLabel ?geneLabel ?biological_processLabel ?diseaseLabel WHERE {
+      ?drug wdt:P129 ?gene_product .   # drug interacts with a gene_product 
+      ?gene wdt:P688 ?gene_product .   # gene_product (usually a protein) is a product of a gene (a region of DNA)
+      ?disease	wdt:P2293 ?gene .      # genetic association between disease and gene 
+      ?disease wdt:P279* wd:Q12078 .   # limit to cancers wd:Q12078 (the * operator runs up a transitive relation..)
+      SERVICE wikibase:label {
+            bd:serviceParam wikibase:language "en" .
+        }
+    }
+    limit 1000
+
+- name: What drugs interact with proteins whose genes are associated with prostate cancer? (Linked)
+  height: 50
+  md: |
+    However, the values returned here are just strings. With linked data, we want to keep the unique
+    identifiers. The next query returns the objects themselves which you can follow to view the
+    data entry from where you can explore related concepts.
+  rq: |
+    #title: What drugs interact with proteins whose genes are associated with prostate cancer (Linked)?
+    #from: "Wikidata for biomedical knowledge integration and curation" by Gregory Stupp (Scripss)
+
     SELECT ?drug ?drugLabel ?gene ?geneLabel ?biological_process ?biological_processLabel ?disease ?diseaseLabel WHERE {
       ?drug wdt:P129 ?gene_product .   # drug interacts with a gene_product 
       ?gene wdt:P688 ?gene_product .   # gene_product (usually a protein) is a product of a gene (a region of DNA)
@@ -19,8 +40,6 @@
     }
     limit 1000
   post: |
-    By clicking on any of the references in the results table, you will be taken to the linked
-    data entry from where you can explore related concepts.
 
     By clicking on "Wikidata query service", you can open the query in an editor so that you
     can experiment on your own.

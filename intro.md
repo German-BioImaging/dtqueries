@@ -106,8 +106,9 @@ cell proliferation":
 <img src="{{site.baseurl}}/images/drugs-slide.png"
     alt="Slide titled 'What drugs interact with proteins that interact with other proteins that are known to be genetically associated to cancer?'"/>
 
-{% assign rec = site.data.intro | first %}
+{% for rec in site.data.intro %}
 {% include_relative iframe.md %}
+{% endfor %}
 
 ### Initial project
 
