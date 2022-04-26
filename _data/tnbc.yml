@@ -18,6 +18,7 @@
     }
 
 - name: Concatenated list of TNBC genes
+  height: 15
   md: |
     This simplified list can be copied under <a href="data.html#network">STRING Network Interactions</a>
     to explore network.
