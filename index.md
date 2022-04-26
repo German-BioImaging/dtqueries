@@ -24,10 +24,6 @@ title: "ΔTissue Demonstrator (v0.4)"
 [<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" width="10%">](https://creativecommons.org/licenses/by-sa/4.0/)
 © 2022 Andra Waagmeester and Josh Moore
 
-## Introduction
-
-<img src="{{site.baseurl}}/images/cloud.png" width="50%"/>
-
 This is the first release of the ΔTissue Demonstrator which provides starting points for the exploration of public, linked data.
 Linked data is core to FAIR data sharing and is a key component of the FAIR data model. In this release
 we use Wikidata as a central hub for linked data related to the ΔTissue disease areas (TB, TBNC, GBM).
@@ -45,11 +41,11 @@ Resources that are reachable via data links include:
 Other resources, like [Genomic Data Commons Data Portal](https://portal.gdc.cancer.gov/)
 or [sfaira portal](https://theislab.github.io/sfaira-portal/) provide access to large
 quantities of data using the same (or compatible) identifiers but which are not
-directly linkable.
+directly linkable. Finally, other sites like [Scholia](https://scholia.toolforge.org/)
+provide enhanced visualization of the existing data links, like the image below
+showing the topics of all ΔTissue authors who could be found in Wikidata.
 
-Finally, other sites like [Scholia](https://scholia.toolforge.org/) provide enhanced
-visualization of the existing data links, like the image above showing the topics
-of all ΔTissue authors who could be found in Wikidata.
+<img src="{{site.baseurl}}/images/cloud.png" width="50%"/>
 
 For the purpose of this demonstrator workflows have been developed:
 
