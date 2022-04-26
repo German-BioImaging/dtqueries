@@ -99,7 +99,6 @@ Suggestions for different queries on the disease areas are welcome using this [f
   </li>
   <li><a href="data.html">Data Resources</a>
     <ol>
-     <li><a href="data.html#network">STRING Network Interactions</a></li>
      <li><a href="data.html#tcga">TCGA</a></li>
      <li><a href="data.html#sfaira">sfaira</a></li>
     </ol>

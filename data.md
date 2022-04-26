@@ -6,39 +6,11 @@ datatable: true
 ## Contents:
 
 <ol>
-  <li><a href="#network">STRING Network Interactions</a></li>
   <li><a href="#tcga">TCGA</a></li>
   <li><a href="#sfaira">sfaira</a></li>
 </ol>
 
 <br/>
-
-----
-
-<br/>
-
-## STRING Network Interactions {#network}
-
-The list of genes from Wikidata can be entered here to visualize
-the network interactions from https://string-db.org. The list
-shown by default is from TNBC:
-
-<center>
-    <input type="text" id='inputarea' placeholder='PKM PDK1 PSPH PFKP SLC7A11 LS SLC2A1 HK1 LDHA PDP1 PSAT1 SLC16A1 PHGDH SLC1A5'/>
-    <br/>
-    <button onclick='javascript:send_request_to_string();' type="button">Let's go!</button>
-    <div id="stringEmbedded"></div>
-</center>
-
-<script>
-$(document).ready( function () {
-  send_request_to_string()
-} );
-</script>
-
-<br/>
-
-[Contents ↑](#contents)
 
 ----
 
