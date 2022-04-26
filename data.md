@@ -3,6 +3,10 @@ title: Data Resources
 datatable: true
 ---
 
+{% assign back = "tuberculosis" %}
+{% assign next = "index" %}
+{% include_relative navigation.md %}
+
 There is, however, a large amount of <i>unlinked</i> data available
 on the web. Here we have investigated two examples, [TCGA](#tcga)
 and [sfaira](#sfaira)). Both are candidates for linking to other
@@ -115,6 +119,8 @@ Each column in the table displays how many cells of a given type were found in e
 </table>
 
 [Contents ↑](#contents)
+
+{% include_relative navigation.md %}
 
 <script>
 $(document).ready( function () {

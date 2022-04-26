@@ -2,7 +2,11 @@
 title: Tuberculosis
 ---
 
+{% assign back = "glioblastoma" %}
+{% assign next = "data" %}
+{% include_relative navigation.md %}
+
 {% assign sparql = site.data.tuberculosis %}
 {% include_relative sparql.md %}
 
-[Next ➡](./data.html)
+{% include_relative navigation.md %}

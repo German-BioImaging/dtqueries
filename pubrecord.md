@@ -2,6 +2,10 @@
 title: Publication records
 ---
 
+{% assign back = "intro" %}
+{% assign next = "tnbc" %}
+{% include_relative navigation.md %}
+
 Projects like
 [Pubmed](https://pubmed.ncbi.nlm.nih.gov/),
 [Crossref](https://crossref.org),
@@ -16,4 +20,4 @@ an entry if necessary.
 {% assign sparql = site.data.pubrecord %}
 {% include_relative sparql.md %}
 
-[Next ➡](./tnbc.html)
+{% include_relative navigation.md %}

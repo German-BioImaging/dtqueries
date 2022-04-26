@@ -12,6 +12,7 @@ plugins:
 
 exclude:
   - iframe.md
+  - navigation.md
   - sparql.md
 
 header_pages:

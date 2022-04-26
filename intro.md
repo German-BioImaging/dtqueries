@@ -3,6 +3,10 @@ title: An Intro
 datatable: true
 ---
 
+{% assign back = "index" %}
+{% assign next = "pubrecord" %}
+{% include_relative navigation.md %}
+
 A major challenge of any data-related endeavor is the integration of
 disparate sources of information. German BioImaging (GerBI;
 <https://gerbi-gmb.de/>) is currently involved in a project to link all German
@@ -200,4 +204,4 @@ understanding of the domain.
 * Triples: The basic unit of an RDF graph consisting of (resource, predicate, object).
 * URI: universal resource identifier, a standardized representation of web resources. See <https://www.w3.org/Addressing/URL/uri-spec.html> 
 
-[Next ➡](./pubrecord.html)
+{% include_relative navigation.md %}
