@@ -17,7 +17,7 @@
 
 ## {{ rec.name }}
 
-{% include_relative iframe.md %}
+{% include_relative iframe.md rec=rec %}
 
 <br/>
 
