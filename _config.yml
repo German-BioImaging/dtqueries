@@ -14,6 +14,13 @@ exclude:
   - sparql.md
   - CHANGELOG.md
 
+header_pages:
+  - intro.md
+  - pubrecord.md
+  - tnbc.md
+  - glioblastoma.md
+  - tuberculosis.md
+  - data.md
 
 # Doesn't work on GitHub Pages
 page_gen-dirs: true

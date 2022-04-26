@@ -1,5 +1,5 @@
 ---
-title: Triple-negative breast cancer
+title: TNBC
 ---
 
 {% assign sparql = site.data.tnbc %}

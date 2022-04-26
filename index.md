@@ -13,7 +13,7 @@
 }
 </script>
 
-# ΔTissue Demonstrator (v0.3)
+# ΔTissue Demonstrator (v0.4)
 
 © 2022 Andra Waagmeester and Josh Moore
 
@@ -69,6 +69,15 @@ Suggestions for different queries on the disease areas are welcome using this [f
 ## Contents
 
 <ol>
+  <li><a href="intro.html">An Introduction</a> (<b>NEW</b>)
+    <ol>
+      <li><a href="intro.html#what-is-linked-data">What is Linked Data?</a></li>
+      <li><a href="intro.html#toy-example">Toy example</a></li>
+      <li><a href="intro.html#initial-project">Initial project</a></li>
+      <li><a href="intro.html#outlook">Outlook</a></li>
+      <li><a href="intro.html#terminology">Terminology</a></li>
+    </ol>
+  </li>
   <li><a href="pubrecord.html">Publication Record</a>
     <ol>
 {% for rec in site.data.pubrecord %}
