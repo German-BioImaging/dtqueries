@@ -15,3 +15,5 @@ an entry if necessary.
 
 {% assign sparql = site.data.pubrecord %}
 {% include_relative sparql.md %}
+
+[Next ➡](./tnbc.html)

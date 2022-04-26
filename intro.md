@@ -199,3 +199,5 @@ understanding of the domain.
 * Sparql: specifications for languages and protocols for querying RDF graphs and a W3C recommendation. See <https://www.w3.org/TR/2013/REC-sparql11-overview-20130321/> 
 * Triples: The basic unit of an RDF graph consisting of (resource, predicate, object).
 * URI: universal resource identifier, a standardized representation of web resources. See <https://www.w3.org/Addressing/URL/uri-spec.html> 
+
+[Next ➡](./pubrecord.html)
