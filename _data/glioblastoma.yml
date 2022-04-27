@@ -1,4 +1,32 @@
+- name: Genes associated with Glioblastoma through gene variant annotations 
+  md: |
+    Unlike TNBC, the gene variant associations returns a more sizable list
+    of genes:
+  rq: |
+    #title: Genes associated with Glioblastoma through gene variant annotations 
+    SELECT DISTINCT ?gene ?geneLabel ?variant ?variantLabel  WHERE {
+      VALUES ?predicator {p:P3354 p:P3355 p:P3356 p:P3357 p:P3358 p:P3359}
+      VALUES ?predicatorValue {ps:P3354 ps:P3355 ps:P3356 ps:P3357 ps:P3358 ps:P3359} 
+      ?variant ?predictor ?node ;
+              wdt:P3433 ?gene .
+      ?node ?predicatorValue ?therapy .
+      ?node pq:P2175 wd:Q282142 .
+      ?prop wikibase:claim ?predicator .
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+    }
+
 - name: Gene list linked through pathways on glioblastoma
+  md: |
+    Or similarly, a pathway can be used as the semantic starting
+    point for related genes. Here we see
+    <https://www.wikipathways.org/index.php/Pathway:WP2261>,
+    "Glioblastoma signaling pathways (Homo sapiens)", a pathway that already
+    existed in WikiPathways:
+
+    <iframe src ="https://www.wikipathways.org/wpi/PathwayWidget.php?id=WP2261" width="600px" height="300px" style="overflow:hidden;"></iframe>
+
+    which produces this gene list:
+
   rq: |
     #title: Gene list linked through pathways on glioblastoma
     #description: This query returns a list of genes linked through pathways on glioblastoma.
@@ -8,10 +36,10 @@
     PREFIX bd: <http://www.bigdata.com/rdf#>
 
     SELECT DISTINCT ?gene ?geneLabel ?scholia WHERE {
-        VALUES ?disease {wd:Q282142} # with a main subject of glioblastoma
+        VALUES ?disease {wd:Q282142}    # with a main subject of glioblastoma
         ?pathway wdt:P2410 ?wpid ;      # pathways with a Wikipathways ID
                 wdt:P921 ?disease ;
-                wdt:P527 ?gene .      # which has various parts
+                wdt:P527 ?gene .        # which has various parts
         ?gene wdt:P31 wd:Q7187 .       # part is of part gene
       BIND(uri(CONCAT("https://scholia.toolforge.org/gene/",REPLACE(str(?gene), "http://www.wikidata.org/entity/", ""))) as ?scholia)
       SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
@@ -19,8 +47,8 @@
 
 - name: Concatenated list of GBM genes
   md: |
-    This simplified list can be copied under <a href="data.html#network">STRING Network Interactions</a>
-    to explore network.
+    This list can also be shortened and entered into <https://string-db.org>
+    to provide a network interaction visualization:
   rq: |
     #title: Concatenated list of GBM genes
     PREFIX wd: <http://www.wikidata.org/entity/>
@@ -38,10 +66,10 @@
     }
 
   post: |
-    ## STRING Network Interactions {#network}
+    ### STRING Network Interactions {#network}
 
-    The list of genes from Wikidata can be entered here to visualize
-    the network interactions from https://string-db.org.
+    The list of genes from above can be entered here to visualize
+    the network interactions from https://string-db.org:
 
     <center>
         <input type="text" id='inputarea' placeholder='RB1 BRCA1 SRC AKT2 ARAF CCNE1 TP53 EGFR ATM MET IGF1R CDKN1A RAF1 GRB2 TSC1 FGFR2 CDKN2A CCND2 ERBB2 PTEN EP300 HRAS PIK3CA PIK3CD CCND1 MAPK1 MAPK3 PRKCD E2F1 IRS1 AKT1 ERBB3 FOXO1 FOXO3 GAB1 MDM2 MDM4 FOXO4 MSH6 CDK2 CDK4 CDK6 PRKCA FGFR1 PIK3CB PIK3CG PIK3R2 PLCG1 PLCG2 PRKCB PRKCG PRKCH NRAS PDGFRA PDGFRB PDPK1 PIK3C2A PIK3C2B PIK3C2G MAP2K7 MAP2K4 TSC2 AKT3 SPRY2 ERRFI1 MIR21 NF1 PRKCI PRKCQ PRKCZ MAP2K1 MAP2K2 MAP2K3 MAP2K5 MAP2K6 KRAS CDKN1B PIK3R1 BRAF BRCA2 CBL CDKN2B CDKN2C'/>
@@ -78,6 +106,6 @@
       ?disease wdt:P279* ?diseaseRoot .
       BIND(uri(CONCAT("https://scholia.toolforge.org/disease/",REPLACE(str(?disease), "http://www.wikidata.org/entity/", ""))) as ?scholia_disease)
       BIND(uri(CONCAT("https://scholia.toolforge.org/topic/",REPLACE(str(?cellLines), "http://www.wikidata.org/entity/", ""))) as ?scholia_cellLine)
-     
-        SERVICE wikibase:label { bd:serviceParam wikibase:language "en" } .
+
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "en" } .
     }
