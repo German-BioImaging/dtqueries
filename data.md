@@ -8,15 +8,15 @@ datatable: true
 {% include_relative navigation.md %}
 
 There is, however, a large amount of <i>unlinked</i> data available
-on the web. Here we have investigated two examples, [TCGA](#tcga)
-and [sfaira](#sfaira)). Both are candidates for linking to other
+on the web. Here we have investigated two examples, [sfaira](#sfaira)
+and [TCGA](#tcga). Both are candidates for linking to other
 resources to make a single, queryable platform.
 
 ## Contents:
 
 <ol>
-  <li><a href="#tcga">TCGA</a></li>
   <li><a href="#sfaira">sfaira</a></li>
+  <li><a href="#tcga">TCGA</a></li>
 </ol>
 
 <br/>
@@ -25,56 +25,12 @@ resources to make a single, queryable platform.
 
 <br/>
 
-## TCGA
-
-The following cases from https://portal.gdc.cancer.gov/ have been identified
-as TNBC by downloading the `nationwidechildrens.org_clinical_patient_brca.txt` file
-associated with the data and checking for a value of `Negative` in the
-'er_status_by_ihc', 'pr_status_by_ihc', and 'her2_status_by_ihc' columns. (See
-https://www.biostars.org/p/279048/ for details)
-
-<table class="display" id="tcga_table">
-    <thead>
-        <tr>
-        <th>TCGA Case</th>
-        <th>High-impact somatic mutations</th>
-        <th>Images available</th>
-        </tr>
-    </thead>
-    <tbody>
-{% for rec in site.data.tcga %}
-        <tr>
-            <td><a href="https://portal.gdc.cancer.gov/cases/{{ rec.case }}">{{rec.case}}</a></td>
-            <td>{% for gene in rec.genes%}
-                {{gene["symbol"]}} {% unless forloop.last %},{% endunless %}
-                {% endfor %}
-            </td>
-            <td>
-                {% if rec.slides %}
-                <a href="https://portal.gdc.cancer.gov/repository?filters=%7B%22content%22%3A%5B%7B%22content%22%3A%7B%22field%22%3A%22cases.case_id%22%2C%22value%22%3A%5B%22{{rec.case}}%22%5D%7D%2C%22op%22%3A%22in%22%7D%2C%7B%22content%22%3A%7B%22field%22%3A%22files.experimental_strategy%22%2C%22value%22%3A%5B%22Tissue%20Slide%22%5D%7D%2C%22op%22%3A%22in%22%7D%5D%2C%22op%22%3A%22and%22%7D&searchTableTab=files">
-                    yes
-                </a>
-                {% else %}
-                no
-                {%endif %}
-            </td>
-        </tr>
-{% endfor %}
-    </tbody>
-</table>
-
-<br/>
-
-[Contents ↑](#contents)
-
-----
-
-<br/>
-
 ## sfaira
 
-sfaira ties together single-cell data for over 170 datasets for numerous tissues
-types in both human and mouse. Downloading and loading the datasets can take
+sfaira ties together single-cell data consists of over 170 datasets for numerous tissues
+types in both human and mouse. A [https://theislab.github.io/sfaira-portal/](website)
+allows filtering the datasets and Python code is available for downloading and caching
+the various binary resources that make up a dataset. Downloading and loading the datasets can take
 significant time. Here metadata from the {{ site.data.sfaira.datasets | size }}
 human brain datasets has been parsed using the `sfaira` python library:
 
@@ -88,7 +44,9 @@ human brain datasets has been parsed using the `sfaira` python library:
     ds.streamline_metadata(schema="sfaira")
 ```
 
-Each column in the table displays how many cells of a given type were found in each dataset:
+Each column in the table displays how many cells of a given type were found in each dataset.
+This is just one example of the type of queryable feature that one might want to extract from
+the datasets. In the table, the columns are represented by the following numbers for readability:
 <ol>
 {% for rec in site.data.sfaira["datasets"] %}
    <li>{{ rec.dataset }}</li>
@@ -120,18 +78,22 @@ Each column in the table displays how many cells of a given type were found in e
 
 [Contents ↑](#contents)
 
+<br/>
+
+## TCGA
+
+
+----
+
+<br/>
 
 ### TCGA Patient Table
 
-This notebook creates RDF with relevant ontologies found through EBI-OLS:
-https://www.ebi.ac.uk/ols/index. The semantic model is a reflection of the
-personal interpretation of Andra Waagmeester who is no expert on the data. The
-generated linked data should be treated as such, exemplary data of a possible
-semantic model. This model and the (arbitrary) choices for the selected
-ontological terms need to be reviewed or redesigned by a field expert. 
-
-https://portal.gdc.cancer.gov/files/8162d394-8b64-4da2-9f5b-d164c54b9608
-
+[The Cancer Genome Atlas Program (TCGA)](https://www.cancer.gov/about-nci/organization/ccg/research/structural-genomics/tcga)
+data available from the [Genomic Data Commons Data Portal](https://portal.gdc.cancer.gov/)
+poses a similar problem. Though there is a [GraphQL](https://graphql.org/)
+API, not all metadata is accessible. For example, the table below is critical
+for identifying TNBC cases from other forms of breast cancer.
 
 <div>
 <style scoped>
@@ -147,7 +109,7 @@ https://portal.gdc.cancer.gov/files/8162d394-8b64-4da2-9f5b-d164c54b9608
         text-align: right;
     }
 </style>
-<table border="1" class="display" id="nb1_table">
+<table border="1" class="display" id="nb1_table" class="stretchable">
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -1164,138 +1126,84 @@ https://portal.gdc.cancer.gov/files/8162d394-8b64-4da2-9f5b-d164c54b9608
 <p>1097 rows × 112 columns</p>
 </div>
 
+This single TSV file
+[`nationwidechildrens.org_clinical_patient_brca.txt`](https://portal.gdc.cancer.gov/files/8162d394-8b64-4da2-9f5b-d164c54b9608)
+is attached to each of the over 1000 breast cancer cases in the GDC Portal but
+it must be separately downloaded to properly interpret the data. (Perhaps even
+more importantly, **the interpretations here are those of the authors and may
+vary from those of domain experts!**)
 
-Looking a bit closer:
- * the values for `margin_status` are: 'Close', 'Negative', 'Positive', '[Not Available]', '[Unknown]'.
- * `bcr_patient_uuid` can be mapped to https://schema.org/Patient
+Interpretation:
 
+ * `bcr_patient_uuid` is the GDC unique identifier for this case and is likely
+   best suited for constructing a unique identifier for this [patient](https://schema.org/Patient).
 
-```
-    if (row["gender"] == "FEMALE"):
-        kg.add((patientURI, schema.gender, schema.Female))
-        kg.add((patientURI, schema.gender, wikidata.Q6581072))
-    elif(row["gender"] == "MALE"):
-        kg.add((patientURI, schema.gender, schema.Female))
-        kg.add((patientURI, schema.gender, wikidata.Q6581097))
-        
-    # diagnosis
-    diagnosis = BNode()
-    kg.add((patientURI, obo.RO_0016002, diagnosis))
-    kg.add((diagnosis, RDF.type, obo.NCIT_C71732))
-    kg.add((obo.NCIT_C71732, RDFS.label, Literal("triple-negative breast cancer", lang="en")))
-    kg.add((obo.NCIT_C71732, SKOS.exactMatch, wikidata.Q7843332))
-    
-    # TCGA BAR code
-    kg.add((diagnosis, DCTERMS.identifier, Literal(row["bcr_patient_barcode"],datatype=XSD.string)))
-    kg.add((diagnosis, DC.identifier, tcga[row["bcr_patient_barcode"]]))
-    
-    # age at diagnosis
-    age_at_diagnosis = BNode()
-    kg.add((diagnosis, sio.SIO_000008 ,age_at_diagnosis ))
-    #kg.parse(sio.SIO_000008)
-    kg.add((age_at_diagnosis, RDF.value, Literal(row["age_at_diagnosis"], datatype=XSD.integer)))
-    kg.add((age_at_diagnosis, RDF.type, obo.NCIT_C156420))
-    kg.add((obo.NCIT_C156420, RDFS.label, Literal("Age at Diagnosis", lang="en")))
-    # year of diagnosis
-    year_of_diagnosis = BNode()
-    kg.add((diagnosis, sio.SIO_000008, year_of_diagnosis))
-    kg.add((year_of_diagnosis, RDF.value, Literal(row["initial_pathologic_dx_year"], datatype=XSD.gYear)))
-    kg.add((year_of_diagnosis, RDF.type, obo.NCIT_C168823))
-    kg.add((year_of_diagnosis, RDFS.label, Literal("Year of Diagnosis", lang="en")))
-    
-    # first surgical procedure
-    first_surgical_procedure = BNode()
-    if row["surgical_procedure_first"] == "Lumpectomy":
-        kg.add((first_surgical_procedure, RDF.type, snomed["392021009"]))
-        kg.add((first_surgical_procedure, obo.NCIT_R180, diagnosis))
-    if row["surgical_procedure_first"] == "Modified Radical Mastectomy":
-        kg.add((first_surgical_procedure, RDF.type, obo.NCIT_C15278))
-        kg.add((first_surgical_procedure, obo.NCIT_R180, diagnosis))
-    if row["surgical_procedure_first"] == "Modified Radical Mastectomy":
-        kg.add((first_surgical_procedure, RDF.type, snomed["172043006"]))
-        kg.add((first_surgical_procedure, obo.NCIT_R180, diagnosis))
-        
-    # method_initial_path_dx
-    ## Using the same model as above
-    ### {'Core needle biopsy',
-    ### 'Cytology (e.g. Peritoneal or pleural fluid)',
-    ###'Excisional Biopsy',
-    ###'Fine needle aspiration biopsy',
-    ###'Incisional Biopsy',
-    ###'Other method, specify:',
-    ###'Tumor resection',
-    ###'[Discrepancy]',
-    ### '[Not Available]'}
-    if row["method_initial_path_dx"] == "Core needle biopsy":
-        kg.add((first_surgical_procedure, RDF.type, snomed["9911007"])) ## Snomed has exact label
-        kg.add((first_surgical_procedure, RDF.type, obo.NCIT_C15680)) ## NCIT lacks "Needle", but definition aligns
-        kg.add((first_surgical_procedure, obo.NCIT_R180, diagnosis))
-    if row["method_initial_path_dx"] == "Cytology":
-        kg.add((first_surgical_procedure, RDF.type, obo.NCIT_C16491)) 
-        kg.add((first_surgical_procedure, obo.NCIT_R180, diagnosis))
-    if row["method_initial_path_dx"] == "Excisional Biopsy":
-        kg.add((first_surgical_procedure, RDF.type, obo.NCIT_C15385)) 
-        kg.add((first_surgical_procedure, obo.NCIT_R180, diagnosis))
-    if row["method_initial_path_dx"] == "Fine needle biopsy":
-        kg.add((first_surgical_procedure, RDF.type, snomed["48635004"])) ## Snomed has exact label
-        kg.add((first_surgical_procedure, RDF.type, obo.NCIT_C15361)) ## Fine needle aspiration
-        kg.add((first_surgical_procedure, obo.NCIT_R180, diagnosis))
-    if row["method_initial_path_dx"] == "Incisional Biopsy":
-        kg.add((first_surgical_procedure, RDF.type, obo.NCIT_C15386)) 
-        kg.add((first_surgical_procedure, obo.NCIT_R180, diagnosis))
-    if row["method_initial_path_dx"] == "Tumor resection":
-        kg.add((first_surgical_procedure, RDF.type, obo.NCIT_C164212)) 
-        kg.add((first_surgical_procedure, obo.NCIT_R180, diagnosis))
-     
-    # method_initial_path_dx_other
-    ## Using the same model as above
-    ###{'Biopsy not specified',
-    ###'Biopsy, NOS',
-    ###'Lumpectomy',
-    ###'Modified Radical Masectomy',
-    ###"Patey's Suregery",
-    ###"Patey's Surgery",
-    ###'SKIN BIOPSY',
-    ###'Skin biopsy',
-    ###'Ultrasound-guided biopsy',
-    ###'Ultrasound-guided mammotome biopsy',
-    ###'Wide local incision',
-    ###'[Not Applicable]',
-    ###'[Not Available]',
-    ###'[Unknown]',
-    ###'biopsy, NOS',
-    ###'intraoperative examination',
-    ###'stereotactic biopsy'}
-    method_initial_path_dx_other = BNode()
-    if row["method_initial_path_dx_other"] in  ["Biopsy not specified", 'Biopsy, NOS', 'biopsy, NOS'] :
-        kg.add((method_initial_path_dx_other, RDF.type, obo.NCIT_C15189)) 
-        kg.add((method_initial_path_dx_other, obo.NCIT_R180, diagnosis))
-    if row["method_initial_path_dx_other"] == "Lumpectomy": 
-        kg.add((method_initial_path_dx_other, RDF.type, obo.NCIT_C15755)) 
-        kg.add((method_initial_path_dx_other, obo.NCIT_R180, diagnosis))
-    if row["method_initial_path_dx_other"] == "Modified Radical Masectomy": 
-        kg.add((method_initial_path_dx_other, RDF.type, obo.NCIT_C15278)) 
-        kg.add((method_initial_path_dx_other, obo.NCIT_R180, diagnosis))
-    if row["method_initial_path_dx_other"] in  ["Patey's Suregery", "Patey's Surgery"] :
-        kg.add((method_initial_path_dx_other, RDF.type, snomed["395702000"])) 
-        kg.add((method_initial_path_dx_other, obo.NCIT_R180, diagnosis))
-    if row["method_initial_path_dx_other"] in  ["SKIN BIOPSY", "Skin biopsy"] :
-        kg.add((method_initial_path_dx_other, RDF.type, obo.NCIT_C51692)) 
-        kg.add((method_initial_path_dx_other, obo.NCIT_R180, diagnosis))
-    if row["method_initial_path_dx_other"] in  ["Ultrasound-guided biopsy", "Ultrasound-guided mammotome biopsy"] :
-        kg.add((method_initial_path_dx_other, RDF.type, obo.NCIT_C93022)) 
-        kg.add((method_initial_path_dx_other, obo.NCIT_R180, diagnosis))
-    if row["method_initial_path_dx_other"] == "Wide local incision": 
-        kg.add((method_initial_path_dx_other, RDF.type, obo.NCIT_C94441)) ## NCIT does not contain WLincision, but WLexision
-        kg.add((method_initial_path_dx_other, obo.NCIT_R180, diagnosis))
-    if row["method_initial_path_dx_other"] == "intraoperative examination": 
-        kg.add((method_initial_path_dx_other, RDF.type, snomed["73443006"])) ## snomed: Intraoperative state (finding)
-        kg.add((method_initial_path_dx_other, obo.NCIT_R180, diagnosis))
-    if row["method_initial_path_dx_other"] == "stereotactic biopsy": 
-        kg.add((method_initial_path_dx_other, RDF.type, obo.NCIT_C51654)) ## snomed: Intraoperative state (finding)
-        kg.add((method_initial_path_dx_other, obo.NCIT_R180, diagnosis)) 
-    
-```
+* `bcr_patient_barcode` is the TCGA-submitted identifier that is frequently
+  used in file names, etc. associated with this patient.
+
+* 'er_status_by_ihc', 'pr_status_by_ihc', and 'her2_status_by_ihc' columns (or
+  "breast_carcinoma_estrogen_receptor_status",
+  "breast_carcinoma_progesterone_receptor_status", and
+  "lab_proc_her2_neu_immunohistochemistry_receptor_status" respectively) take
+  the values: `Equivocal`, `Indeterminate`, `Negative`, `Positive`,
+  `[Not Available]`, and `[Not Evaluated]`. Below we've taken those entries
+  with three `Negative` values to be TNBC.
+  (See <https://www.biostars.org/p/279048/> for details)
+
+* `surgical_procedure_first` with values like "Lumpectomy" and "Modified Radical Mastectomy"
+  can be mapped to SNOMED 392021009 and 172043006.
+
+* `method_initial_path_dx` values, however, can only partially be mapped to SNOMED.
+   'Core needle biopsy' is 9911007 and 'Fine needle aspiration biopsy' is 48635004
+   but others are less clear:
+   - 'Cytology (e.g. Peritoneal or pleural fluid)'
+   - 'Excisional Biopsy'
+   - 'Incisional Biopsy'
+   - 'Other method, specify:'
+   - 'Tumor resection'
+   - '[Discrepancy]'
+   - '[Not Available]'
+
+* `method_initial_path_dx_other` values have similar issues plus misspellings
+   ("Patey's Suregery" vs. -"Patey's Surgery") as well as differences in
+   capitalization ('SKIN BIOPSY' vs. 'Skin biopsy').
+
+Once the above table has been used to identify cases of interest, then the GraphQL
+API can be used to check for other data features, e.g., whether or not a high-impact
+somatic mutation was associated with the case or if there are images of
+tissue slides are available:
+
+<table class="display" id="tcga_table">
+    <thead>
+        <tr>
+        <th>TCGA Case</th>
+        <th>High-impact somatic mutations</th>
+        <th>Images available</th>
+        </tr>
+    </thead>
+    <tbody>
+{% for rec in site.data.tcga %}
+        <tr>
+            <td><a href="https://portal.gdc.cancer.gov/cases/{{ rec.case }}">{{rec.case}}</a></td>
+            <td>{% for gene in rec.genes%}
+                {{gene["symbol"]}} {% unless forloop.last %},{% endunless %}
+                {% endfor %}
+            </td>
+            <td>
+                {% if rec.slides %}
+                <a href="https://portal.gdc.cancer.gov/repository?filters=%7B%22content%22%3A%5B%7B%22content%22%3A%7B%22field%22%3A%22cases.case_id%22%2C%22value%22%3A%5B%22{{rec.case}}%22%5D%7D%2C%22op%22%3A%22in%22%7D%2C%7B%22content%22%3A%7B%22field%22%3A%22files.experimental_strategy%22%2C%22value%22%3A%5B%22Tissue%20Slide%22%5D%7D%2C%22op%22%3A%22in%22%7D%5D%2C%22op%22%3A%22and%22%7D&searchTableTab=files">
+                    yes
+                </a>
+                {% else %}
+                no
+                {%endif %}
+            </td>
+        </tr>
+{% endfor %}
+    </tbody>
+</table>
+
+<br/>
 
 [Contents ↑](#contents)
 
