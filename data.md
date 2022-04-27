@@ -16,7 +16,12 @@ resources to make a single, queryable platform.
 
 <ol>
   <li><a href="#sfaira">sfaira</a></li>
-  <li><a href="#tcga">TCGA</a></li>
+  <li><a href="#tcga">TCGA</a>
+     <ol>
+        <li><a href="#brca">All breast cancer records</a> (<b>NEW</b>)</li>
+        <li><a href="#tnbc">Mutations and slides for TNBC cases</a></li>
+     </ol>
+  </li>
 </ol>
 
 <br/>
@@ -92,7 +97,7 @@ poses a similar problem. Though there is a [GraphQL](https://graphql.org/)
 API, not all metadata is accessible. For example, the table below is critical
 for identifying TNBC cases from other forms of breast cancer.
 
-### All breast cancer records
+### All breast cancer records {#brca}
 
 This single TSV file
 [`nationwidechildrens.org_clinical_patient_brca.txt`](https://portal.gdc.cancer.gov/files/8162d394-8b64-4da2-9f5b-d164c54b9608)
@@ -170,7 +175,7 @@ Interpretation:
    ("Patey's Suregery" vs. -"Patey's Surgery") as well as differences in
    capitalization ('SKIN BIOPSY' vs. 'Skin biopsy').
 
-### Mutations and Slides for TNBC
+### Mutations and slides for TNBC cases {#tnbc}
 
 Once the above table has been used to identify the {{ site.data.tcga | size }}
 TNBC cases, then the GraphQL API can be used to check for other data features,

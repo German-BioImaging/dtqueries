@@ -66,7 +66,7 @@
     }
   post: |
     (Note: you can find more potentially TNBC-related genes under
-      ["Mutations and Slides for TNBC"](./data.html#{{ "Mutations and Slides for TNBC" | sluggify }}).)
+      ["Mutations and slides for TNBC cases"](./data.html#tnbc).)
 
 - name: Concatenated list of TNBC genes
   height: 15
