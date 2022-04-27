@@ -22,7 +22,7 @@ title: "ΔTissue Demonstrator (v0.4)"
 {% include_relative navigation.md %}
 
 [<img src="https://mirrors.creativecommons.org/presskit/buttons/88x31/png/by-sa.png" width="10%">](https://creativecommons.org/licenses/by-sa/4.0/)
-© 2022 Andra Waagmeester and Josh Moore
+© 2022 [Andra Waagmeester](https://scholia.toolforge.org/author/Q19845625) and [Josh Moore](https://scholia.toolforge.org/author/Q56512375).
 
 This is the first release of the ΔTissue Demonstrator which provides starting points for the exploration of public, linked data.
 Linked data is core to FAIR data sharing and is a key component of the FAIR data model. In this release
