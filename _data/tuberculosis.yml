@@ -38,3 +38,37 @@
       BIND(uri(CONCAT("https://scholia.toolforge.org/gene/",REPLACE(str(?gene), "http://www.wikidata.org/entity/", ""))) as ?scholia)
       SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
     }
+
+- name: Concatenated list of tuberculosis genes
+  md: |
+    This list can also be shortened and entered into <https://string-db.org>
+    to provide a network interaction visualization:
+  rq: |
+    #title: Concatenated list of tuberculosis genes
+    SELECT (GROUP_CONCAT(?geneLabel; SEPARATOR=" ") as ?geneList) WHERE {
+      ?item wdt:P31 wd:Q4915012 ;
+            wdt:P527 ?gene ;
+            wdt:P1050 wd:Q12204 .
+      ?gene wdt:P31 wd:Q7187 .
+      ?gene rdfs:label ?geneLabel.
+       FILTER(LANG(?geneLabel) = "en")
+    }
+
+  post: |
+    ### STRING Network Interactions {#network}
+
+    The list of genes from above can be entered here to visualize
+    the network interactions from https://string-db.org:
+
+    <center>
+        <input type="text" id='inputarea' placeholder='STAT1 TYK2 JAK2 JAK1 IFI35 IFIT1 IFIT3 IFNAR1 IFNAR2 IFNGR1 IFNGR2 IRF1 MX1 OAS1 PSMB8 PTPN2 STAT2 TAP1 IFITM1 PIAS1 SOCS1 IRF9'/>
+        <br/>
+        <button onclick='javascript:send_request_to_string();' type="button">Let's go!</button>
+        <div id="stringEmbedded"></div>
+    </center>
+
+    <script>
+    $(document).ready( function () {
+      send_request_to_string()
+    } );
+    </script>

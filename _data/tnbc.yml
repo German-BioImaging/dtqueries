@@ -1,4 +1,52 @@
+- name: Genes associated with TNBC through gene variant annotations (negative result)
+  height: 20
+  md: |
+    The first attempt was to load the list of genes associated with TNBC. Unsurprisingly,
+    BRCA1 and BRCA2 are returned, but no other results are found.
+  rq: |
+    #title: Genes associated with TNBC through gene variant annotations 
+    SELECT DISTINCT ?variant ?variantLabel  WHERE {
+      VALUES ?predicator {p:P3354 p:P3355 p:P3356 p:P3357 p:P3358 p:P3359}
+      VALUES ?predicatorValue {ps:P3354 ps:P3355 ps:P3356 ps:P3357 ps:P3358 ps:P3359}
+        ?variant ?predictor ?node .
+      ?node ?predicatorValue ?therapy .
+      ?node pq:P2175 wd:Q7843332 .
+      ?prop wikibase:claim ?predicator .
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+    }
+
+- name: Therapies associate with positive and negative predicators (partial result)
+  md: |
+    In the Wikidata model, there are also several properties to for
+    predictors, both positive and negative as well as diagnostic, prognostic,
+    or therapeutic. The list of therapies associated with TNBC
+    ("[Q7843332](https://www.wikidata.org/wiki/Q7843332)") is richer.
+  rq: |
+    #title: 
+    SELECT DISTINCT ?variant ?variantLabel ?propLabel ?therapyLabel WHERE {
+      VALUES ?predicator {p:P3354 p:P3355 p:P3356 p:P3357 p:P3358 p:P3359}
+      VALUES ?predicatorValue {ps:P3354 ps:P3355 ps:P3356 ps:P3357 ps:P3358 ps:P3359}
+        ?variant ?predictor ?node .
+      ?node ?predicatorValue ?therapy .
+      ?node pq:P2175 wd:Q7843332 .
+      ?prop wikibase:claim ?predicator .
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+    }
+
 - name: Genes list linked through pathways on triple-negative breast cancer
+  md: |
+    Rather than further try to reach genes from TNBC within the Wikidata linked
+    data network, a permissively licensed pathway was encoded into
+    [WikiPathways](https://www.wikipathways.org/), a collection of semantically
+    rich pathway representations. Below you can see a graphical representation
+    of <https://www.wikipathways.org/index.php/Pathway:WP5211>, "Glucose
+    metabolism in triple-negative breast cancer cells (Homo sapiens)":
+
+    <iframe src ="https://www.wikipathways.org/wpi/PathwayWidget.php?id=WP5211" width="600px" height="300px" style="overflow:hidden;"></iframe>
+
+    Queries like this one can now be written that use the gene list provided by
+    this pathway:
+
   rq: |
     #title: Genes list linked through pathways on triple-negative breast cancer
     PREFIX wd:<http://www.wikidata.org/entity/>
@@ -7,21 +55,24 @@
     PREFIX bd:<http://www.bigdata.com/rdf#>
 
     SELECT DISTINCT ?gene ?geneLabel ?scholia WHERE {
-        VALUES ?disease {wd:Q7843332} # with a main subject of triple negative breast cancer
+        VALUES ?disease {wd:Q7843332}   # with a main subject of triple negative breast cancer
         ?pathway wdt:P2410 ?wpid ;      # pathways with a Wikipathways ID
                 wdt:P921 ?disease ;
-                wdt:P527 ?gene .      # which has various parts
-        ?gene wdt:P31 wd:Q7187 .       # part is of part gene
+                wdt:P527 ?gene .        # which has various parts
+        ?gene wdt:P31 wd:Q7187 .        # part is of part gene
         BIND(uri(CONCAT("https://scholia.toolforge.org/gene/",REPLACE(str(?gene), "http://www.wikidata.org/entity/", ""))) as ?scholia)
 
       SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
     }
+  post: |
+    (Note: you can find more potentially TNBC-related genes under
+      ["Mutations and Slides for TNBC"](./data.html#{{ "Mutations and Slides for TNBC" | sluggify }}).)
 
 - name: Concatenated list of TNBC genes
   height: 15
   md: |
-    This simplified list can be copied under <a href="data.html#network">STRING Network Interactions</a>
-    to explore network.
+    This simplified list can then be passed to other resources like <https://string-db.org>
+    to explore the network interactions:
   rq: |
     #title: Genes list linked through pathways on triple-negative breast cancer
     SELECT (GROUP_CONCAT(?geneLabel; SEPARATOR=" ") as ?geneList) WHERE {
@@ -36,11 +87,10 @@
       FILTER(LANG(?geneLabel) = "en")
     }
   post: |
-    ## STRING Network Interactions {#network}
+    ### STRING Network Interactions {#network}
 
-    The list of genes from Wikidata can be entered here to visualize
-    the network interactions from https://string-db.org. The list
-    shown by default is from TNBC:
+    The list of genes from above can be entered here to visualize
+    the network interactions from https://string-db.org:
 
     <center>
         <input type="text" id='inputarea' placeholder='PKM PDK1 PSPH PFKP SLC7A11 LS SLC2A1 HK1 LDHA PDP1 PSAT1 SLC16A1 PHGDH SLC1A5'/>
@@ -56,6 +106,8 @@
     </script>
 
 - name: Chemical compounds part of a pathway on triple-negative breast cancer
+  md: |
+    Similarly the chemical compounds involved in a pathway can be queried:
   rq: |
     #title: Chemical compounds part of a pathway on triple-negative breast cancer
 
@@ -65,16 +117,46 @@
     PREFIX bd: <http://www.bigdata.com/rdf#>
 
     SELECT DISTINCT ?compound ?compoundLabel ?scholia WHERE {
-        ?pathway wdt:P2410 ?wpid ;      # pathways with a Wikipathways ID
-                wdt:P921 wd:Q7843332 ; # with a main subject of triple negative breast cancer
-                wdt:P527 ?compound .      # which has various parts
+        ?pathway wdt:P2410 ?wpid ;                    # pathways with a Wikipathways ID
+                wdt:P921 wd:Q7843332 ;                # with a main subject of triple negative breast cancer
+                wdt:P527 ?compound .                  # which has various parts
         ?compound wdt:P279*/wdt:P31 wd:Q11173 .       # part is subclass of of chemical compound
         BIND(uri(CONCAT("https://scholia.toolforge.org/chemical/",REPLACE(str(?gene), "http://www.wikidata.org/entity/", ""))) as ?scholia)
 
       SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
     }
 
+- name: Genes and the cellular components where encoded gene products are found in Pathways on TNBC
+  height: 70
+  md: |
+    or even cellular components via the related gene products. Here a different
+    representation of the same knowledge graph is being displayed:
+
+  rq: |
+    #title: Genes and the cellular components where encoded gene products are found in Pathways on TNBC
+    #defaultView:Graph
+    PREFIX wd:<http://www.wikidata.org/entity/>
+    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+    PREFIX wikibase:<http://wikiba.se/ontology#>
+    PREFIX bd:<http://www.bigdata.com/rdf#>
+
+    SELECT DISTINCT ?molecular_function ?molecular_functionLabel ?gene ?geneLabel  WHERE {
+        VALUES ?disease {wd:Q7843332} # with a main subject of triple negative breast cancer
+        ?pathway wdt:P2410 ?wpid ;      # pathways with a Wikipathways ID
+                wdt:P921 ?disease ;
+                wdt:P527 ?gene .      # which has various parts
+        ?gene wdt:P31 wd:Q7187 ;       # part is of part gene
+              wdt:P688 ?protein .
+        ?protein wdt:P680 ?molecular_function .
+        BIND(uri(CONCAT("https://scholia.toolforge.org/gene/",REPLACE(str(?gene), "http://www.wikidata.org/entity/", ""))) as ?scholia)
+
+      SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
+    }
+
 - name: Cell types related to breast cancer via markers
+  md: |
+    Finally, even without the use of pathways, some cell type annotations can be discovered
+    in WikiData via the "has marker" and "genetic association" properties.
   rq: |
     #title: Cell types related to breast cancer via markers
 
@@ -97,27 +179,4 @@
         FILTER (LANG(?cellTypeLabel) = "en")
         FILTER (LANG(?diseaseLabel) = "en")
         FILTER (LANG(?geneLabel) = "en")
-    }
-
-- name: Genes and the cellular components where encoded gene products are found in Pathways on TNBC
-  height: 70
-  rq: |
-    #title: Genes and the cellular components where encoded gene products are found in Pathways on TNBC
-    #defaultView:Graph
-    PREFIX wd:<http://www.wikidata.org/entity/>
-    PREFIX wdt: <http://www.wikidata.org/prop/direct/>
-    PREFIX wikibase:<http://wikiba.se/ontology#>
-    PREFIX bd:<http://www.bigdata.com/rdf#>
-
-    SELECT DISTINCT ?molecular_function ?molecular_functionLabel ?gene ?geneLabel  WHERE {
-        VALUES ?disease {wd:Q7843332} # with a main subject of triple negative breast cancer
-        ?pathway wdt:P2410 ?wpid ;      # pathways with a Wikipathways ID
-                wdt:P921 ?disease ;
-                wdt:P527 ?gene .      # which has various parts
-        ?gene wdt:P31 wd:Q7187 ;       # part is of part gene
-              wdt:P688 ?protein .
-        ?protein wdt:P680 ?molecular_function .
-        BIND(uri(CONCAT("https://scholia.toolforge.org/gene/",REPLACE(str(?gene), "http://www.wikidata.org/entity/", ""))) as ?scholia)
-
-      SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en". }
     }

@@ -13,8 +13,6 @@
 
 ----
 
-<br/>
-
 ## {{ rec.name }}
 
 {% include_relative iframe.md rec=rec %}
