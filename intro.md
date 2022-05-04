@@ -138,7 +138,8 @@ concrete life sciences graphs have been built on top it, like ChlamBase
 strong candidate, offering editing of individual triples (the basic unit
 of a graph) and services for processing tabular data.
 
-Alternatively, a pure RDF database like the open-source Virtuoso
+Alternatively, a pure RDF database like the open-source Apache Jena Fuseki https://jena.apache.org/documentation/fuseki2/
+and the open-source version of Virtuoso 
 (<https://virtuoso.openlinksw.com/>) or the commercial GraphDB
 (<https://www.ontotext.com/products/graphdb/>) and Stardog
 (<https://www.stardog.com/>) would equally provide the basic needs of
